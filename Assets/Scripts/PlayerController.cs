@@ -213,7 +213,7 @@ public class PlayerController : Character
 
     public void Shoot(InputAction.CallbackContext context)
     {
-        if(context.started && !currentWeapon.isShooting) 
+        if(context.started && !currentWeapon.isShooting && !dead) 
             StartCoroutine(currentWeapon.Shoot(angle));
     }
 
