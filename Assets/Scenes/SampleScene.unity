@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 325182836}
   - component: {fileID: 325182835}
   - component: {fileID: 325182837}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1480,7 +1480,7 @@ Tilemap:
       - {fileID: -2265761570655249421, guid: c507dd83430eab94286ced637ca2b518, type: 3}
       - {fileID: 1743076835940916298, guid: c507dd83430eab94286ced637ca2b518, type: 3}
       - {fileID: 8880082457101031840, guid: c507dd83430eab94286ced637ca2b518, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 1, z: 0}
@@ -8748,12 +8748,12 @@ PrefabInstance:
     - target: {fileID: 5360924144097346833, guid: 357bd9db85e0cbb4a8086c22c534af37,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.581
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5360924144097346833, guid: 357bd9db85e0cbb4a8086c22c534af37,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.659
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5360924144097346833, guid: 357bd9db85e0cbb4a8086c22c534af37,
         type: 3}

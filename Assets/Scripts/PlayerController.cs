@@ -39,6 +39,7 @@ public class PlayerController : Character
     private Transform rightHand;
     private UnityEvent OnDeath;
     private TrailRenderer trail;
+    private float angle;
 
 
     public override void Awake()
@@ -148,7 +149,7 @@ public class PlayerController : Character
 
                 var gunPoint = direction - (Vector2)currentWeapon.firePoint.position;
                 gunPoint.Normalize();
-                var angle = Vector2.SignedAngle(Vector2.left, gunPoint);
+                angle = Vector2.SignedAngle(Vector2.left, gunPoint);
                 currentWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
             }
         }
@@ -212,8 +213,8 @@ public class PlayerController : Character
 
     public void Shoot(InputAction.CallbackContext context)
     {
-        if(context.started) 
-            currentWeapon.Shoot();
+        if(context.started && !currentWeapon.isShooting) 
+            StartCoroutine(currentWeapon.Shoot(angle));
     }
 
     public void ControlsChanged(PlayerInput input)
@@ -248,7 +249,7 @@ public class PlayerController : Character
         rightHand.gameObject.SetActive(false);
         player.gravityScale = 30.0f;
         GetComponent<SpriteRenderer>().sortingLayerName = "Pit";
-        Physics2D.IgnoreLayerCollision(1, 8);
+        Physics2D.IgnoreLayerCollision(1, 9);
         Physics2D.IgnoreLayerCollision(1, 0);
     }
 

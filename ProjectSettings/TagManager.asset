@@ -16,10 +16,10 @@ TagManager:
   - UI
   - 
   - 
-  - Room
-  - 
-  - 
-  - 
+  - Floor
+  - Wall
+  - Bullets
+  - IgnoreBullets
   - 
   - 
   - 
