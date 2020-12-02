@@ -5,6 +5,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : Character
 {
@@ -17,6 +18,8 @@ public class PlayerController : Character
     [Space]
     public GameObject gameMaster;
     public Weapon currentWeapon;
+    [Space]
+    public Image cursor;
 
     private Rigidbody2D player;
     private Animator animator;
@@ -66,6 +69,8 @@ public class PlayerController : Character
     {
         dashManager.UpdateDashUI(dashNumber, dashesLeft, dashCooldownTime, dashCooldown);
         healthManager.UpdateHealthUI(maxHealth, health);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     void FixedUpdate()
@@ -124,6 +129,9 @@ public class PlayerController : Character
 
     private void Update()
     {
+        direction = cursor.transform.position;
+        direction = Camera.main.ScreenToWorldPoint(direction);
+
         if (currentControls == "Keyboard&Mouse")
         {
             var temp = (direction - player.position);
@@ -199,8 +207,7 @@ public class PlayerController : Character
 
         else if (currentControls == "Keyboard&Mouse")
         {
-            direction = context.ReadValue<Vector2>();
-            direction = Camera.main.ScreenToWorldPoint(direction);
+            cursor.transform.position = context.ReadValue<Vector2>();
         }
     }
 

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Torch
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -1112114296248100167, guid: c507dd83430eab94286ced637ca2b518, type: 3}
-  - {fileID: 6334084216251676713, guid: c507dd83430eab94286ced637ca2b518, type: 3}
-  - {fileID: 4224866116753991040, guid: c507dd83430eab94286ced637ca2b518, type: 3}
-  - {fileID: 1825002816040945289, guid: c507dd83430eab94286ced637ca2b518, type: 3}
+  - {fileID: -8553596595128423742, guid: c507dd83430eab94286ced637ca2b518, type: 3}
+  - {fileID: 330400763883709057, guid: c507dd83430eab94286ced637ca2b518, type: 3}
+  - {fileID: 6950709768184568528, guid: c507dd83430eab94286ced637ca2b518, type: 3}
+  - {fileID: 837017221450738011, guid: c507dd83430eab94286ced637ca2b518, type: 3}
   m_MinSpeed: 6
   m_MaxSpeed: 6
   m_AnimationStartTime: 0
