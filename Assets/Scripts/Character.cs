@@ -20,16 +20,19 @@ public abstract class Character : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
-        health -= damage; 
-
-        if (!isHitted)
+        if (!dead)
         {
-            isHitted = true;
-            StartCoroutine("Hurt");
-        }
+            health -= damage;
 
-        if (health <= 0)
-            Die();
+            if (!isHitted)
+            {
+                isHitted = true;
+                StartCoroutine("Hurt");
+            }
+
+            if (health <= 0)
+                Die();
+        }
     }
 
     public IEnumerator Hurt()

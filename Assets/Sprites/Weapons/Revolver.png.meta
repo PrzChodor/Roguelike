@@ -1,37 +1,49 @@
 fileFormatVersion: 2
-guid: 990117a1e7921914c94ec81fa25fcb9f
+guid: 4cef8a563c3a5e2448a97376bb90cdec
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4011165979584494121
-    second: Revolver_0
+      213: -5287221763083586415
+    second: Revolverv2_0
   - first:
-      213: 2869598591142837679
-    second: Revolver_1
+      213: 5630394089345390424
+    second: Revolverv2_1
   - first:
-      213: 3448707816367666956
-    second: Revolver_2
+      213: 8782119332936271238
+    second: Revolverv2_2
   - first:
-      213: -6938344202705223565
-    second: Revolver_3
+      213: -5946544643851491568
+    second: Revolverv2_3
   - first:
-      213: -8660396610530198205
-    second: Revolver_4
+      213: 8157858863969429362
+    second: Revolverv2_4
   - first:
-      213: 2256763407412106494
-    second: Revolver_0
+      213: -1264612777298293366
+    second: Revolverv2_5
   - first:
-      213: -6679553373047840731
-    second: Revolver_1
+      213: -7398136192854298860
+    second: Revolverv2_6
   - first:
-      213: -118376454991083121
-    second: Revolver_2
+      213: -4158319420361396166
+    second: Revolverv2_0
   - first:
-      213: 6463031682739223845
-    second: Revolver_3
+      213: -1580688605583806001
+    second: Revolverv2_1
   - first:
-      213: 1673447997965135132
-    second: Revolver_4
+      213: -2725532235691232095
+    second: Revolverv2_2
+  - first:
+      213: 7603200479043277559
+    second: Revolverv2_3
+  - first:
+      213: -8043343586278935686
+    second: Revolverv2_4
+  - first:
+      213: 7721983145533464
+    second: Revolverv2_5
+  - first:
+      213: 1494502689966648358
+    second: Revolverv2_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,110 +125,164 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Revolver_0
+      name: Revolverv2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 24
       alignment: 9
-      pivot: {x: 0.87, y: 0.34}
+      pivot: {x: 0.78, y: 0.21}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef416e8bc52a15f10800000000000000
-      internalID: 2256763407412106494
+      spriteID: a3030c6d48eaa46c0800000000000000
+      internalID: -4158319420361396166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Revolver_1
+      name: Revolverv2_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 48
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 24
       alignment: 9
-      pivot: {x: 0.87, y: 0.34}
+      pivot: {x: 0.78, y: 0.21}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 520a835d8957d43a0800000000000000
-      internalID: -6679553373047840731
+      spriteID: fc17bab8614401ae0800000000000000
+      internalID: -1580688605583806001
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Revolver_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.87, y: 0.34}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f898c7acd317b5ef0800000000000000
-      internalID: -118376454991083121
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Revolver_3
+      name: Revolverv2_2
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 24
       alignment: 9
-      pivot: {x: 0.87, y: 0.34}
+      pivot: {x: 0.78, y: 0.21}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52d34c5a21d41b950800000000000000
-      internalID: 6463031682739223845
+      spriteID: 1a47fb34fd6fc2ad0800000000000000
+      internalID: -2725532235691232095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Revolver_4
+      name: Revolverv2_3
       rect:
         serializedVersion: 2
-        x: 128
+        x: 144
         y: 0
-        width: 32
-        height: 32
+        width: 48
+        height: 24
       alignment: 9
-      pivot: {x: 0.87, y: 0.34}
+      pivot: {x: 0.78, y: 0.21}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1deccc7618493710800000000000000
-      internalID: 1673447997965135132
+      spriteID: 7f2547d5d8ef38960800000000000000
+      internalID: 7603200479043277559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Revolverv2_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 24
+      alignment: 9
+      pivot: {x: 0.78, y: 0.21}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a737d6daf9d406090800000000000000
+      internalID: -8043343586278935686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Revolverv2_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 24
+      alignment: 9
+      pivot: {x: 0.78, y: 0.21}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 810e95e4a1f6b1000800000000000000
+      internalID: 7721983145533464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Revolverv2_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 24
+      alignment: 9
+      pivot: {x: 0.78, y: 0.21}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62ce35f374a8db410800000000000000
+      internalID: 1494502689966648358
       vertices: []
       indices: 
       edges: []
