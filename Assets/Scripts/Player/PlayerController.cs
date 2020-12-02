@@ -5,6 +5,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerController : Character
@@ -261,7 +262,7 @@ public class PlayerController : Character
         leftHand.gameObject.SetActive(false);
         rightHand.gameObject.SetActive(false);
         player.gravityScale = 30.0f;
-        GetComponent<SpriteRenderer>().sortingLayerName = "Pit";
+        GetComponent<SortingGroup>().sortingLayerName = "Pit";
         Physics2D.IgnoreLayerCollision(1, 9);
         Physics2D.IgnoreLayerCollision(1, 0);
     }

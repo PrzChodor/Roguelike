@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public abstract class Enemy : Character
@@ -24,7 +25,7 @@ public abstract class Enemy : Character
         OnThisDeath.AddListener(currentLevel.OnEnemyDeath);
     }
 
-    private void FixedUpdate()
+    public virtual void Update()
     {
         if (active)
         {

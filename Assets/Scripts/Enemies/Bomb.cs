@@ -1,19 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Bomb : Enemy
 {
     public GameObject explosion;
     public float trigerDistance = 0.7f;
-    public float speed = 3.0f;
 
     private Animator animator;
     private Rigidbody2D enemy;
-    private Vector3Int playerPos;
-    private Vector3Int enemyPos;
-    private Vector2 nextPos;
-    private PathFinding pathFinder;
+    private NavMeshAgent agent;
+    private Vector3 startPosition;
 
     public override void Awake()
     {
@@ -21,20 +19,29 @@ public class Bomb : Enemy
         animator = this.GetComponent<Animator>();
         enemy = this.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
-        pathFinder = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<PathFinding>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Start()
     {
-        Vector3 temp = pathFinder.NextStep(enemy.position, player.position);
-        nextPos = new Vector2(temp.x, temp.y);
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        startPosition = transform.position;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        animator.SetFloat("Horizontal", agent.velocity.x);
+        animator.SetFloat("Vertical", agent.velocity.y);
+        animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
     }
 
     public override void Die()
     {
-        dead = true;
         enemy.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetTrigger("Explode");
+        Deactivate();
     }
 
     public override void OnDeath()
@@ -46,29 +53,12 @@ public class Bomb : Enemy
 
     public override void Move()
     {
-        if (!dead)
-        {
-            if (playerPos != pathFinder.walkable.WorldToCell(player.position) || enemyPos != pathFinder.walkable.WorldToCell(enemy.position))
-            {
-                playerPos = pathFinder.walkable.WorldToCell(player.position);
-                enemyPos = pathFinder.walkable.WorldToCell(enemy.position);
-                Vector3 temp = pathFinder.NextStep(enemy.position, player.position);
-                nextPos = new Vector2(temp.x,temp.y);
-            }
-
-            Vector2 movement = nextPos - enemy.position;
-
-            animator.SetFloat("Horizontal", movement.x);
-            animator.SetFloat("Vertical", movement.y);
-            animator.SetFloat("Speed", movement.sqrMagnitude);
-
-            enemy.MovePosition(enemy.position + movement.normalized * speed * Time.deltaTime);
-        }
+        agent.SetDestination(player.position);
     }
 
     public override void Attack()
     {
-        if (!dead && Vector2.Distance(enemy.position, player.position) < trigerDistance)
+        if (Vector2.Distance(enemy.position, player.position) < trigerDistance)
         {
             Die();
         }
@@ -77,6 +67,6 @@ public class Bomb : Enemy
     public override void Deactivate()
     {
         base.Deactivate();
-        animator.SetFloat("Speed", 0);
+        agent.ResetPath();
     }
 }
