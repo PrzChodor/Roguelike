@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 103939674076018095}
   - component: {fileID: 2511897434715420297}
   - component: {fileID: 2450938997023353957}
+  - component: {fileID: 1708888215}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: GameMaster
@@ -154,7 +155,18 @@ MonoBehaviour:
     m_ActionId: 80cf1a80-344b-4e3b-ac4c-7e3249f29b4f
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: Shoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: dca8a689-b38a-4e68-82cf-f5ca20f65d1a
     m_ActionName: Player/Fire[/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
   - m_PersistentCalls:
@@ -229,3 +241,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778e6d596ff34f1459e818a7559b8262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: {fileID: 0}
+  player: {fileID: 0}
+--- !u!114 &1708888215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2511897434715420309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef680532a5fce54faeab8fb949e6064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  smoothTime: 0.3

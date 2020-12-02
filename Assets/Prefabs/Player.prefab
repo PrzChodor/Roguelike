@@ -347,6 +347,7 @@ MonoBehaviour:
   dashNumber: 1
   gameMaster: {fileID: 0}
   currentWeapon: {fileID: 765187925693621885}
+  cursor: {fileID: 0}
 --- !u!96 &5771244316936537800
 TrailRenderer:
   serializedVersion: 2
