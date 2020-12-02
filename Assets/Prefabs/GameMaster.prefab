@@ -256,4 +256,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  smoothTime: 0.3
+  smoothTime: 0.2

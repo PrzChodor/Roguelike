@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
         Camera.main.transform.position = target;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         var screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
         var mouse = Mouse.current.position.ReadValue() - screenCenter;
