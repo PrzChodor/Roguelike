@@ -42,6 +42,7 @@ public class Bomb : Enemy
         enemy.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetTrigger("Explode");
         Deactivate();
+        dead = true;
     }
 
     public override void OnDeath()
