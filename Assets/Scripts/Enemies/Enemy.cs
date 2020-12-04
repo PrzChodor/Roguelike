@@ -29,8 +29,11 @@ public abstract class Enemy : Character
     {
         if (active)
         {
-            Move();
-            Attack();
+            if (IsPlayerInSight())
+            {
+                Move();
+                Attack();
+            }
         }
     }
 
@@ -48,5 +51,10 @@ public abstract class Enemy : Character
     {
         Deactivate();
         OnThisDeath.Invoke();
+    }
+
+    public bool IsPlayerInSight()
+    {
+        return !Physics2D.Linecast(transform.position, player.position, LayerMask.GetMask("Walls"));
     }
 }

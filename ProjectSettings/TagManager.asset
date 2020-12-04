@@ -22,7 +22,7 @@ TagManager:
   - Walls
   - IgnoreBullets
   - Mask
-  - BehindMask
+  - Enemies
   - Black
   - 
   - 
