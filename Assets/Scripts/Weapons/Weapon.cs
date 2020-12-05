@@ -10,9 +10,7 @@ public class Weapon : MonoBehaviour
     public float spread;
     public float fireRate;
 
-    [HideInInspector]
     public bool isShooting;
-    [HideInInspector]
     public Transform firePoint;
 
     private Animator animator;

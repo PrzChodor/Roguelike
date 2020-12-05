@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.isTrigger || collision.gameObject.layer == 9)
         {
-            if (collision.tag != "Player")
+            if (collision.tag != "Player" && collision.tag != "Projectile")
             {
                 if (collision.tag == "Enemy")
                     collision.GetComponent<Character>().TakeDamage(damage);

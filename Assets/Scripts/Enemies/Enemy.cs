@@ -9,6 +9,9 @@ public abstract class Enemy : Character
     public bool active = false;
 
     protected Rigidbody2D player;
+    protected NavMeshAgent agent;
+    protected Animator animator;
+    protected Rigidbody2D rb;
 
     private Level currentLevel;
     private UnityEvent OnThisDeath;
@@ -22,7 +25,16 @@ public abstract class Enemy : Character
         OnThisDeath = new UnityEvent();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         currentLevel = this.gameObject.GetComponentInParent<Level>();
+        agent = GetComponent<NavMeshAgent>();
         OnThisDeath.AddListener(currentLevel.OnEnemyDeath);
+        animator = this.GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     public virtual void Update()

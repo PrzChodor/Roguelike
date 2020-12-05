@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class Vision : MonoBehaviour
 {
-    public int rays = 90;
+    public int rays = 360;
     public MeshFilter meshFilter;
-    public SpriteRenderer spriteRenderer;
     public LayerMask obstacleMask;
 
     public float edgeDistThreshold;
@@ -14,7 +14,6 @@ public class Vision : MonoBehaviour
 
     private Vector2 dir;
     private Mesh mesh;
-    private Sprite sprite;
 
     private void Start()
     {

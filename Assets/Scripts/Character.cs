@@ -8,8 +8,7 @@ public abstract class Character : MonoBehaviour
     public int health;
     public int maxHealth;
     protected bool isHitted;
-
-    SpriteRenderer sprite;
+    protected SpriteRenderer sprite;
 
     public abstract void Die();
 
@@ -25,10 +24,7 @@ public abstract class Character : MonoBehaviour
             health -= damage;
 
             if (!isHitted)
-            {
-                isHitted = true;
                 StartCoroutine("Hurt");
-            }
 
             if (health <= 0)
                 Die();
@@ -39,6 +35,7 @@ public abstract class Character : MonoBehaviour
     {
         if (!dead)
         {
+            isHitted = true;
             sprite.color = Color.red;
             yield return new WaitForSeconds(0.2f);
             sprite.color = Color.white;

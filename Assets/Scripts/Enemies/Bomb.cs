@@ -8,27 +8,6 @@ public class Bomb : Enemy
     public GameObject explosion;
     public float trigerDistance = 0.7f;
 
-    private Animator animator;
-    private Rigidbody2D enemy;
-    private NavMeshAgent agent;
-    private Vector3 startPosition;
-
-    public override void Awake()
-    {
-        base.Awake();
-        animator = this.GetComponent<Animator>();
-        enemy = this.GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
-        agent = GetComponent<NavMeshAgent>();
-    }
-
-    private void Start()
-    {
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-        startPosition = transform.position;
-    }
-
     public override void Update()
     {
         base.Update();
@@ -39,7 +18,7 @@ public class Bomb : Enemy
 
     public override void Die()
     {
-        enemy.constraints = RigidbodyConstraints2D.FreezeAll;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetTrigger("Explode");
         Deactivate();
         dead = true;
@@ -59,7 +38,7 @@ public class Bomb : Enemy
 
     public override void Attack()
     {
-        if (Vector2.Distance(enemy.position, player.position) < trigerDistance)
+        if (Vector2.Distance(rb.position, player.position) < trigerDistance)
         {
             Die();
         }
