@@ -34,16 +34,12 @@ public class HomingProjectile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.isTrigger)
+        if (collision.gameObject.tag == "Wall")
+            GameObject.Destroy(gameObject);
+        else if (collision.isTrigger && collision.gameObject.tag == "Player")
         {
-            print(collision.gameObject.name);
-            if (collision.gameObject.tag == "Wall")
-                GameObject.Destroy(gameObject);
-            else if (collision.gameObject.tag == "Player")
-            {
                 collision.GetComponent<Character>().TakeDamage(damage);
                 GameObject.Destroy(gameObject);
-            }
         }
     }
 }

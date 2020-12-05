@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7051120902468689119}
   - component: {fileID: -596714216269679098}
   - component: {fileID: -8236476297092336170}
-  m_Layer: 16
+  m_Layer: 14
   m_Name: Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
@@ -136,9 +136,9 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 1479372276
   m_Radius: 0.1
-  m_Speed: 5
-  m_Acceleration: 5
-  avoidancePriority: 99
+  m_Speed: 7
+  m_Acceleration: 8
+  avoidancePriority: 50
   m_AngularSpeed: 5
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -147,4 +147,4 @@ NavMeshAgent:
   m_Height: 0.2
   m_BaseOffset: 0.1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
+  m_ObstacleAvoidanceType: 4
