@@ -27,7 +27,6 @@ public class Mage : Enemy
     public override void Die()
     {
         animator.SetTrigger("Die");
-        Deactivate();
         dead = true;
         rb.simulated = false;
     }
@@ -44,6 +43,11 @@ public class Mage : Enemy
         {
             GameObject.Instantiate(projectile, point.position, Quaternion.identity);
         }
+    }
+
+    public override void OnDeath()
+    {
+        base.OnDeath();
     }
 
     IEnumerator OnAttack()

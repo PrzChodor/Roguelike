@@ -230,8 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dead: 0
-  health: 20
-  maxHealth: 20
+  health: 10
+  maxHealth: 10
   active: 0
   attackCooldown: 5
   projectile: {fileID: 4559098953192897428, guid: 3350d45d8aef60c4c88d686dbeaf21f8,

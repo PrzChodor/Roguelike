@@ -23,10 +23,11 @@ public abstract class Enemy : Character
     {
         base.Awake();
         OnThisDeath = new UnityEvent();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         currentLevel = this.gameObject.GetComponentInParent<Level>();
-        agent = GetComponent<NavMeshAgent>();
         OnThisDeath.AddListener(currentLevel.OnEnemyDeath);
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        agent = GetComponent<NavMeshAgent>();
         animator = this.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody2D>();
     }
@@ -67,6 +68,6 @@ public abstract class Enemy : Character
 
     public bool IsPlayerInSight()
     {
-        return !Physics2D.Linecast(transform.position, player.position, LayerMask.GetMask("Walls"));
+        return sprite.isVisible && !Physics2D.Linecast(transform.position, player.position, LayerMask.GetMask("Walls"));
     }
 }
