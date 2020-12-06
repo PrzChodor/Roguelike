@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 574793835}
   - component: {fileID: 574793836}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2375427730868153093}
   - component: {fileID: 1746768391672533607}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Hand (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 5771244316936537800}
   - component: {fileID: 8072990263970968069}
   - component: {fileID: 2871980762334629748}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -561,7 +561,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rays: 360
   meshFilter: {fileID: 8155507638291822136}
-  spriteRenderer: {fileID: 0}
   obstacleMask:
     serializedVersion: 2
     m_Bits: 512

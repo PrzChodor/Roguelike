@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(ParticleSystem), typeof(TrailRenderer))]
-[RequireComponent(typeof(Collider2D))]
 public class Bullet : MonoBehaviour
 {
+    public LayerMask layers;
     [HideInInspector]
     public int damage;
 
@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     private ParticleSystem particles;
     private TrailRenderer trail;
     private SpriteRenderer sprite;
+    private Vector2 lastPos;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class Bullet : MonoBehaviour
         particles = GetComponent<ParticleSystem>();
         trail = GetComponent<TrailRenderer>();
         sprite = GetComponent<SpriteRenderer>();
+        lastPos = rb.position;
     }
 
     private void Start()
@@ -27,19 +29,23 @@ public class Bullet : MonoBehaviour
         particles.Stop();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
     {
-        if (collision.isTrigger || collision.gameObject.layer == 9)
+        var hits = Physics2D.LinecastAll(lastPos, rb.position, layers);
+
+        foreach (var hit in hits)
         {
-            if (collision.tag != "Player" && collision.tag != "Projectile")
+            if (hit.collider.isTrigger)
             {
-                if (collision.tag == "Enemy" && GetComponent<SpriteRenderer>().isVisible)
+                if (hit.collider.CompareTag("Enemy") && GetComponent<SpriteRenderer>().isVisible)
                 {
-                    collision.GetComponent<Character>().TakeDamage(damage);
+                    hit.collider.GetComponent<Character>().TakeDamage(damage);
                     ParticleSystem.MainModule newMain = particles.main;
                     newMain.startColor = new Color(1, 0, 0);
                 }
+                rb.position = hit.point;
                 Destroy();
+                break;
             }
         }
     }

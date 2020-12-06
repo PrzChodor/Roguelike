@@ -20,13 +20,13 @@ TagManager:
   - 
   - Floor
   - WallHitbox
-  - Bullets
   - Walls
-  - IgnoreBullets
   - Mask
   - Enemies
   - Black
   - Projectiles
+  - 
+  - 
   - 
   - 
   - 

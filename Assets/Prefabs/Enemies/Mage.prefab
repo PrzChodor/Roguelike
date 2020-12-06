@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 253395477869332605}
-  m_Layer: 14
+  m_Layer: 12
   m_Name: Proj Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 3195204312170013573}
   - component: {fileID: 3195204312170013577}
   - component: {fileID: 1813108002626897850}
-  m_Layer: 14
+  m_Layer: 12
   m_Name: Mage
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1335649596029054365}
-  m_Layer: 14
+  m_Layer: 12
   m_Name: Proj 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1059440690282604092}
-  m_Layer: 14
+  m_Layer: 12
   m_Name: Proj 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1145297635024467461}
-  m_Layer: 14
+  m_Layer: 12
   m_Name: Proj 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
