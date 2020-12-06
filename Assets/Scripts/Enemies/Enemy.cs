@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(NavMeshAgent),typeof(Animator),typeof(Rigidbody2D))]
 public abstract class Enemy : Character
 {
     public bool active = false;
