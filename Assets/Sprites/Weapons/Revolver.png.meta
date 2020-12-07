@@ -44,6 +44,30 @@ TextureImporter:
   - first:
       213: 1494502689966648358
     second: Revolverv2_6
+  - first:
+      213: 4011165979584494121
+    second: Revolver_0
+  - first:
+      213: 2869598591142837679
+    second: Revolver_1
+  - first:
+      213: 3448707816367666956
+    second: Revolver_2
+  - first:
+      213: -6938344202705223565
+    second: Revolver_3
+  - first:
+      213: -8660396610530198205
+    second: Revolver_4
+  - first:
+      213: 7825724369199148441
+    second: Revolver_5
+  - first:
+      213: 8425590286591636443
+    second: Revolver_6
+  - first:
+      213: -3083024517234379138
+    second: Revolver_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -141,7 +165,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Revolverv2_0
+      name: Revolver_0
       rect:
         serializedVersion: 2
         x: 0
@@ -155,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3030c6d48eaa46c0800000000000000
-      internalID: -4158319420361396166
+      spriteID: 92af344d4368aa730800000000000000
+      internalID: 4011165979584494121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Revolverv2_1
+      name: Revolver_1
       rect:
         serializedVersion: 2
         x: 48
@@ -176,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc17bab8614401ae0800000000000000
-      internalID: -1580688605583806001
+      spriteID: fadb70107bcd2d720800000000000000
+      internalID: 2869598591142837679
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Revolverv2_2
+      name: Revolver_2
       rect:
         serializedVersion: 2
         x: 96
@@ -197,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a47fb34fd6fc2ad0800000000000000
-      internalID: -2725532235691232095
+      spriteID: c0735b8ac754cdf20800000000000000
+      internalID: 3448707816367666956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Revolverv2_3
+      name: Revolver_3
       rect:
         serializedVersion: 2
         x: 144
@@ -218,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f2547d5d8ef38960800000000000000
-      internalID: 7603200479043277559
+      spriteID: 3704d5465bc06bf90800000000000000
+      internalID: -6938344202705223565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Revolverv2_4
+      name: Revolver_4
       rect:
         serializedVersion: 2
         x: 192
@@ -239,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a737d6daf9d406090800000000000000
-      internalID: -8043343586278935686
+      spriteID: 34db95fda2710d780800000000000000
+      internalID: -8660396610530198205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Revolverv2_5
+      name: Revolver_5
       rect:
         serializedVersion: 2
         x: 240
@@ -260,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 810e95e4a1f6b1000800000000000000
-      internalID: 7721983145533464
+      spriteID: 99dab30f9de8a9c60800000000000000
+      internalID: 7825724369199148441
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Revolverv2_6
+      name: Revolver_6
       rect:
         serializedVersion: 2
         x: 288
@@ -281,8 +305,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62ce35f374a8db410800000000000000
-      internalID: 1494502689966648358
+      spriteID: bd3b64799b5bde470800000000000000
+      internalID: 8425590286591636443
       vertices: []
       indices: 
       edges: []
@@ -296,7 +320,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-    secondaryTextures: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 530a99e880e8c4a4e84f9a087222893d, type: 3}
+      name: _Emission
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

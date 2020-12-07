@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 904894546}
   - component: {fileID: 540180770039606915}
   - component: {fileID: 5215865020677282065}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Bomb
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6841c64fab5f60e46a3ae741e57ec2d4, type: 2}
+  - {fileID: 2100000, guid: 97321d8c800e2a345a5e89b5410bee71, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2511897434715420299}
-  - component: {fileID: 2511897434715420296}
-  - component: {fileID: 103939674076018095}
   - component: {fileID: 2511897434715420297}
   - component: {fileID: 2450938997023353957}
   - component: {fileID: 1708888215}
+  - component: {fileID: 6831206282054965610}
+  - component: {fileID: 7099319648816154590}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: GameMaster
@@ -35,44 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2511897434715420296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2511897434715420309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0680d6136fd44144283b5f6b856ae24a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashBase: {fileID: 6137184047541192095, guid: 6a2f140095a2f1a4e935c2df3521eced,
-    type: 3}
-  dashFull: {fileID: 6429871271326094868, guid: 5cd0ee009de4ed248b519e9ba2106621,
-    type: 3}
-  dashBarBase: {fileID: 0}
-  dashBarFull: {fileID: 0}
---- !u!114 &103939674076018095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2511897434715420309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21fd8bc8fabd1ff4896ab1a5b9731c0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heartBase: {fileID: 3137824289891118798, guid: 75b5d0fd023d61643b85739470ec2c94,
-    type: 3}
-  heartFull: {fileID: 5340948461188777581, guid: 9121f98d7f4711246aa3dfd7a7207f47,
-    type: 3}
-  heartHalf: {fileID: 870248501282503531, guid: 8ab74a015cff8204083b897b34deb294,
-    type: 3}
-  healthBarBase: {fileID: 0}
-  healthBarFull: {fileID: 0}
 --- !u!114 &2511897434715420297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,3 +205,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   smoothTime: 0.2
+--- !u!114 &6831206282054965610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2511897434715420309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764225ecc512bef4a8b241c2b77b8dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoCount: {fileID: 0}
+  dashBase: {fileID: 6137184047541192095, guid: 6a2f140095a2f1a4e935c2df3521eced,
+    type: 3}
+  dashFull: {fileID: 6429871271326094868, guid: 5cd0ee009de4ed248b519e9ba2106621,
+    type: 3}
+  dashBarBase: {fileID: 0}
+  dashBarFull: {fileID: 0}
+  heartBase: {fileID: 3137824289891118798, guid: 75b5d0fd023d61643b85739470ec2c94,
+    type: 3}
+  heartFull: {fileID: 5340948461188777581, guid: 9121f98d7f4711246aa3dfd7a7207f47,
+    type: 3}
+  heartHalf: {fileID: 870248501282503531, guid: 8ab74a015cff8204083b897b34deb294,
+    type: 3}
+  healthBarBase: {fileID: 0}
+  healthBarFull: {fileID: 0}
+--- !u!114 &7099319648816154590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2511897434715420309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7689062613255374eb67fa999af6579d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}

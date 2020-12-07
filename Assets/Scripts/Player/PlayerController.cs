@@ -32,8 +32,7 @@ public class PlayerController : Character
     private float dashTime;
     private float dashCooldownTime;
     private int dashesLeft;
-    private DashUIManager dashManager;
-    private HealthUIManager healthManager;
+    private UIManager uiManager;
     private LevelMaster levelMaster;
     private string currentControls = "Keyboard&Mouse";
     private float fallTime = 0;
@@ -55,8 +54,7 @@ public class PlayerController : Character
         mainCollider = GetComponent<CapsuleCollider2D>();
         player = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        dashManager = gameMaster.GetComponent<DashUIManager>();
-        healthManager = gameMaster.GetComponent<HealthUIManager>();
+        uiManager = gameMaster.GetComponent<UIManager>();
         levelMaster = gameMaster.GetComponent<LevelMaster>();
         OnDeath = new UnityEvent();
         OnDeath.AddListener(levelMaster.DeactivateCurrent);
@@ -68,25 +66,25 @@ public class PlayerController : Character
 
     private void Start()
     {
-        dashManager.UpdateDashUI(dashNumber, dashesLeft, dashCooldownTime, dashCooldown);
-        healthManager.UpdateHealthUI(maxHealth, health);
+        UpdateUI();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
+        currentWeapon.onReloaded.AddListener(UpdateUI);
     }
 
     void FixedUpdate()
     {
         if (dashActive)
         {
-            Physics2D.IgnoreLayerCollision(12, 14);
-            Physics2D.IgnoreLayerCollision(12, 16);
+            Physics2D.IgnoreLayerCollision(0, 12);
+            Physics2D.IgnoreLayerCollision(0, 14);
             player.MovePosition(player.position + movement * speed * Time.deltaTime + dash * Time.deltaTime);
             dashTime -= Time.deltaTime;
             trail.emitting = true;
             if (dashTime < 0)
             {
-                Physics2D.IgnoreLayerCollision(12, 14, false);
-                Physics2D.IgnoreLayerCollision(12, 16, false);
+                Physics2D.IgnoreLayerCollision(0, 12, false);
+                Physics2D.IgnoreLayerCollision(0, 14, false);
                 dashActive = false;
                 dashTime = dashDuration;
             }
@@ -101,14 +99,14 @@ public class PlayerController : Character
         {
             if (dashCooldownTime < dashCooldown)
             {
-                dashManager.UpdateDashUI(dashNumber, dashesLeft, dashCooldownTime, dashCooldown);
+                UpdateUI();
                 dashCooldownTime += Time.deltaTime;
             }
             else
             {
                 dashCooldownTime = 0;
                 dashesLeft++;
-                dashManager.UpdateDashUI(dashNumber, dashesLeft, dashCooldownTime, dashCooldown);
+                UpdateUI();
             }
         }
 
@@ -125,9 +123,15 @@ public class PlayerController : Character
             }
         }
 
-        if(holdingFire && !currentWeapon.isShooting && !dead) 
+        if(holdingFire && !currentWeapon.isShooting && !dead && currentWeapon.currentAmmo != 0 && !currentWeapon.isReloading)
+        {
             StartCoroutine(currentWeapon.Shoot(angle));
-
+            UpdateUI();
+        }
+        else if(currentWeapon.currentAmmo == 0 && !currentWeapon.isReloading)
+        {
+            StartCoroutine(currentWeapon.Reload());
+        }
     }
 
     private void Update()
@@ -221,7 +225,7 @@ public class PlayerController : Character
             dash = movement * dashSpeed;
             dashActive = true;
             dashesLeft--;
-            dashManager.UpdateDashUI(dashNumber, dashesLeft, dashCooldownTime, dashCooldown);
+            UpdateUI();
         }
     }
 
@@ -231,6 +235,12 @@ public class PlayerController : Character
             holdingFire = true;
         else if (context.canceled)
             holdingFire = false;
+    }
+
+    public void Reload(InputAction.CallbackContext context)
+    {
+        if (context.started && !currentWeapon.isReloading && currentWeapon.currentAmmo != currentWeapon.maxAmmo)
+            StartCoroutine(currentWeapon.Reload());
     }
 
     public void ControlsChanged(PlayerInput input)
@@ -244,7 +254,7 @@ public class PlayerController : Character
         health = 0;
         leftHand.gameObject.SetActive(false);
         rightHand.gameObject.SetActive(false);
-        healthManager.UpdateHealthUI(maxHealth, health);
+        UpdateUI();
         player.constraints = RigidbodyConstraints2D.FreezeAll;
         if (!dead)
             animator.SetTrigger("Die");
@@ -255,7 +265,7 @@ public class PlayerController : Character
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        healthManager.UpdateHealthUI(maxHealth, health);
+        UpdateUI();
     }
 
     public void Fall()
@@ -272,5 +282,12 @@ public class PlayerController : Character
     public void LevelChange(Level level)
     {
         floor = level.floor;
+    }
+
+    public void UpdateUI()
+    {
+        uiManager.UpdateAmmoUI(currentWeapon.currentAmmo, currentWeapon.maxAmmo);
+        uiManager.UpdateDashUI(dashNumber, dashesLeft, dashCooldownTime, dashCooldown);
+        uiManager.UpdateHealthUI(maxHealth, health);
     }
 }
