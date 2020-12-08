@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     private TrailRenderer trail;
     private SpriteRenderer sprite;
     private Vector2 lastPos;
+    private bool destroyed;
 
     private void Awake()
     {
@@ -31,30 +32,33 @@ public class Bullet : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var hits = Physics2D.LinecastAll(lastPos, rb.position, layers);
-
-        foreach (var hit in hits)
+        if (!destroyed)
         {
-            if (hit.collider.isTrigger)
+            var hits = Physics2D.LinecastAll(lastPos, rb.position, layers);
+
+            foreach (var hit in hits)
             {
-                if (hit.collider.CompareTag("Enemy") && GetComponent<SpriteRenderer>().isVisible)
+                if (hit.collider.isTrigger)
                 {
-                    hit.collider.GetComponent<Character>().TakeDamage(damage);
-                    ParticleSystem.MainModule newMain = particles.main;
-                    newMain.startColor = new Color(1, 0, 0);
+                    if (hit.collider.CompareTag("Enemy") && GetComponent<SpriteRenderer>().isVisible)
+                    {
+                        hit.collider.GetComponent<Character>().TakeDamage(damage);
+                        ParticleSystem.MainModule newMain = particles.main;
+                        newMain.startColor = new Color(1, 0, 0);
+                    }
+                    rb.position = hit.point;
+                    Destroy();
+                    break;
                 }
-                rb.position = hit.point;
-                Destroy();
-                break;
             }
         }
     }
 
     private void Destroy()
     {
-        particles.Clear();
+        destroyed = true;
         particles.Play();
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        rb.velocity = Vector2.zero;
         sprite.enabled = false;
         trail.enabled = false;
         GameObject.Destroy(gameObject, particles.main.duration);

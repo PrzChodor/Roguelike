@@ -76,15 +76,15 @@ public class PlayerController : Character
     {
         if (dashActive)
         {
+            Physics2D.IgnoreLayerCollision(0, 11);
             Physics2D.IgnoreLayerCollision(0, 12);
-            Physics2D.IgnoreLayerCollision(0, 14);
             player.MovePosition(player.position + movement * speed * Time.deltaTime + dash * Time.deltaTime);
             dashTime -= Time.deltaTime;
             trail.emitting = true;
             if (dashTime < 0)
             {
+                Physics2D.IgnoreLayerCollision(0, 11, false);
                 Physics2D.IgnoreLayerCollision(0, 12, false);
-                Physics2D.IgnoreLayerCollision(0, 14, false);
                 dashActive = false;
                 dashTime = dashDuration;
             }
