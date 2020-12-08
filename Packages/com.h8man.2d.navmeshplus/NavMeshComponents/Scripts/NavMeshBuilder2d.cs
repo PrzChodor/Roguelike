@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 
@@ -35,7 +36,7 @@ namespace UnityEngine.AI
             else
             {
                 mesh = new Mesh();
-                NavMeshBuilder2d.sprite2mesh(sprite, mesh);
+                NavMeshBuilder2d.Sprite2mesh(sprite, mesh);
                 map.Add(sprite, mesh);
             }
             return mesh;
@@ -69,7 +70,7 @@ namespace UnityEngine.AI
                 case CollectObjects2d.Volume: 
                 case CollectObjects2d.All: 
                 default:
-                    return new[] { GameObject.FindObjectOfType<Grid>().gameObject };
+                    return GameObject.FindObjectsOfType<Grid>().Select(g => g.gameObject).ToArray();
             }
         }
     }
@@ -150,9 +151,11 @@ namespace UnityEngine.AI
             {
                 return;
             }
-            var src = new NavMeshBuildSource();
-            src.shape = NavMeshBuildSourceShape.Mesh;
-            src.area = area;
+            var src = new NavMeshBuildSource
+            {
+                shape = NavMeshBuildSourceShape.Mesh,
+                area = area
+            };
 
             Mesh mesh;
             mesh = builder.GetMesh(sprite.sprite);
@@ -179,10 +182,12 @@ namespace UnityEngine.AI
                 collider = collider.GetComponent<CompositeCollider2D>();
             }
 
-            var src = new NavMeshBuildSource();
-            src.shape = NavMeshBuildSourceShape.Mesh;
-            src.area = area;
-
+            var src = new NavMeshBuildSource
+            {
+                shape = NavMeshBuildSourceShape.Mesh,
+                area = area
+            };
+            Debug.Log("iks");
             Mesh mesh;
             mesh = builder.GetMesh(collider);
             if (mesh == null)
@@ -212,9 +217,11 @@ namespace UnityEngine.AI
             Mesh sharedMesh = null;
             Quaternion rot = default;
 
-            var src = new NavMeshBuildSource();
-            src.shape = NavMeshBuildSourceShape.Mesh;
-            src.area = area;
+            var src = new NavMeshBuildSource
+            {
+                shape = NavMeshBuildSourceShape.Mesh,
+                area = area
+            };
 
             Mesh mesh;
 
@@ -250,18 +257,20 @@ namespace UnityEngine.AI
                     }
                     else //default to box
                     {
-                        var boxsrc = new NavMeshBuildSource();
-                        boxsrc.transform = Matrix4x4.TRS(Vector3.Scale(tilemap.GetCellCenterWorld(vec3int), builder.overrideVector) - tilemap.layoutGrid.cellGap, tilemap.transform.rotation, tilemap.transform.lossyScale) * tilemap.orientationMatrix * tilemap.GetTransformMatrix(vec3int);
-                        boxsrc.shape = NavMeshBuildSourceShape.Box;
-                        boxsrc.size = size;
-                        boxsrc.area = area;
+                        var boxsrc = new NavMeshBuildSource
+                        {
+                            transform = Matrix4x4.TRS(Vector3.Scale(tilemap.GetCellCenterWorld(vec3int), builder.overrideVector) - tilemap.layoutGrid.cellGap, tilemap.transform.rotation, tilemap.transform.lossyScale) * tilemap.orientationMatrix * tilemap.GetTransformMatrix(vec3int),
+                            shape = NavMeshBuildSourceShape.Box,
+                            size = size,
+                            area = area
+                        };
                         sources.Add(boxsrc);
                     }
                 }
             }
         }
 
-        internal static void sprite2mesh(Sprite sprite, Mesh mesh)
+        internal static void Sprite2mesh(Sprite sprite, Mesh mesh)
         {
             Vector3[] vert = new Vector3[sprite.vertices.Length];
             for (int i = 0; i < sprite.vertices.Length; i++)
@@ -280,11 +289,13 @@ namespace UnityEngine.AI
 
         static private NavMeshBuildSource BoxBoundSource(Bounds localBounds)
         {
-            var src = new NavMeshBuildSource();
-            src.transform = Matrix4x4.Translate(localBounds.center);
-            src.shape = NavMeshBuildSourceShape.Box;
-            src.size = localBounds.size;
-            src.area = 0;
+            var src = new NavMeshBuildSource
+            {
+                transform = Matrix4x4.Translate(localBounds.center),
+                shape = NavMeshBuildSourceShape.Box,
+                size = localBounds.size,
+                area = 0
+            };
             return src;
         }
     }
