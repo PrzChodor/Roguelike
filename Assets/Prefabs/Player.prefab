@@ -355,6 +355,7 @@ MonoBehaviour:
   gameMaster: {fileID: 0}
   currentWeapon: {fileID: 0}
   cursor: {fileID: 0}
+  falling: 0
 --- !u!96 &5771244316936537800
 TrailRenderer:
   serializedVersion: 2
@@ -532,7 +533,7 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 2
+  m_PointLightInnerRadius: 1
   m_PointLightOuterRadius: 6
   m_PointLightDistance: 3
   m_PointLightQuality: 1
