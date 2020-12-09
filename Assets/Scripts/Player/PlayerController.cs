@@ -22,13 +22,14 @@ public class PlayerController : Character
     [Space]
     public Image cursor;
 
+    [HideInInspector]
+    public bool falling = false;
     private Rigidbody2D player;
     private Animator animator;
     private Vector2 movement;
     private Vector2 direction;
     private Vector2 dash;
     private bool dashActive = false;
-    private bool falling = false;
     private float dashTime;
     private float dashCooldownTime;
     private int dashesLeft;
@@ -59,6 +60,7 @@ public class PlayerController : Character
         levelMaster = gameMaster.GetComponent<LevelMaster>();
         OnDeath = new UnityEvent();
         OnDeath.AddListener(levelMaster.DeactivateCurrent);
+        OnDeath.AddListener(uiManager.ShowDeathScreen);
         dashTime = dashDuration;
         dashCooldownTime = 0;
         dashesLeft = dashNumber;
@@ -114,11 +116,12 @@ public class PlayerController : Character
         if (!dashActive && !falling && !Physics2D.IsTouching(floor, mainCollider) && !firstFrame)
             Fall();
 
-        if (falling && fallTime < 1)
+        if (falling && fallTime < 0.5)
         {
-            fallTime += 0.1f;
-            GetComponent<SpriteRenderer>().color = Color.Lerp(Color.white, new Color(1, 1, 1, 0), fallTime);
-            if (fallTime > 1.0f)
+            fallTime += Time.deltaTime;
+            GetComponent<SpriteRenderer>().color = Color.Lerp(Color.white, new Color(1, 1, 1, 0), 10 * fallTime);
+            dead = true;
+            if (fallTime > 0.5)
             {
                 Die();
             }
@@ -129,7 +132,7 @@ public class PlayerController : Character
             StartCoroutine(currentWeapon.Shoot(angle));
             UpdateUI();
         }
-        else if(currentWeapon.currentAmmo == 0 && !currentWeapon.isReloading)
+        else if(currentWeapon.currentAmmo == 0 && !currentWeapon.isReloading && !currentWeapon.isShooting)
         {
             StartCoroutine(currentWeapon.Reload());
         }
@@ -259,8 +262,7 @@ public class PlayerController : Character
         rightHand.gameObject.SetActive(false);
         UpdateUI();
         player.constraints = RigidbodyConstraints2D.FreezeAll;
-        if (!dead)
-            animator.SetTrigger("Die");
+        animator.SetTrigger("Die");
         dead = true;
         OnDeath.Invoke();
     }

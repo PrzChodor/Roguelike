@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public GameObject hud;
+    public GameObject deathScreen;
+    public GameObject crosshair;
+    [Space]
     public TextMeshProUGUI ammoCount;
     [Space]
     public GameObject dashBase;
@@ -21,6 +25,20 @@ public class UIManager : MonoBehaviour
 
     private int lastMaxHealth;
     private int lastMaxDashes;
+
+    private void Awake()
+    {
+        deathScreen.SetActive(false);
+    }
+
+    public void ShowDeathScreen()
+    {
+        hud.SetActive(false);
+        crosshair.SetActive(false);
+        deathScreen.SetActive(true);
+        GetComponent<CameraController>().playerDead = true;
+        Cursor.visible = true;
+    }
 
     public void UpdateAmmoUI(int currentAmmo, int maxAmmo)
     {

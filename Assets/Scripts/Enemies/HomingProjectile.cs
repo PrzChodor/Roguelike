@@ -17,6 +17,7 @@ public class HomingProjectile : MonoBehaviour
     private SpriteRenderer sprite;
     private TrailRenderer trail;
     private IEnumerator creation;
+    private bool destroyed;
 
     private void Awake()
     {
@@ -51,21 +52,25 @@ public class HomingProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (!destroyed)
         {
-            StopCoroutine(creation);
-            Destroy();
-        }
-        else if (collision.isTrigger && collision.gameObject.tag == "Player")
-        {
-            collision.GetComponent<Character>().TakeDamage(damage);
-            StopCoroutine(creation);
-            Destroy();
+            if (collision.gameObject.tag == "Wall")
+            {
+                StopCoroutine(creation);
+                Destroy();
+            }
+            else if (collision.isTrigger && collision.gameObject.tag == "Player")
+            {
+                collision.GetComponent<Character>().TakeDamage(damage);
+                StopCoroutine(creation);
+                Destroy();
+            }
         }
     }
 
     private void Destroy()
     {
+        destroyed = true;
         particles.Clear();
         particles.Play(); 
         agent.velocity = Vector3.zero;

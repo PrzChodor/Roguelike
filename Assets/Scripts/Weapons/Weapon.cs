@@ -52,7 +52,9 @@ public class Weapon : MonoBehaviour
     {
         isReloading = true;
 
-        yield return new WaitForSeconds(2f);
+        animator.SetTrigger("Reload");
+        animator.Update(0);
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         currentAmmo = maxAmmo;
         onReloaded.Invoke();
 

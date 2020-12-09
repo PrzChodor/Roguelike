@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     private ParticleSystem particles;
     private SpriteRenderer sprite;
     private Rigidbody2D rb;
+    private bool destroyed;
 
     private void Awake()
     {
@@ -24,19 +25,23 @@ public class Ball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Wall")
+        if (!destroyed)
         {
-            Destroy();
-        }
-        else if (collision.isTrigger && collision.gameObject.tag == "Player")
-        {
-            collision.GetComponent<Character>().TakeDamage(damage);
-            Destroy();
+            if (collision.gameObject.tag == "Wall")
+            {
+                Destroy();
+            }
+            else if (collision.isTrigger && collision.gameObject.tag == "Player")
+            {
+                collision.GetComponent<Character>().TakeDamage(damage);
+                Destroy();
+            }
         }
     }
 
     private void Destroy()
     {
+        destroyed = true;
         particles.Play();
         rb.velocity = Vector2.zero;
         sprite.enabled = false;
