@@ -20,15 +20,18 @@ public class Level : MonoBehaviour
 
     private void Awake()
     {
-        var enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy")).FindAll(g => g.transform.IsChildOf(this.transform));
-        enemyCount = enemies.Count;
-
         OnActivation = new UnityEvent();
         OnDeactivation = new UnityEvent();
         OnCloseDoors = new UnityEvent();
         OnOpenDoors = new UnityEvent();
+    }
 
-        if(doorLeft != null)
+    private void Start()
+    {
+        var enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy")).FindAll(g => g.transform.IsChildOf(this.transform));
+        enemyCount = enemies.Count;
+
+        if (doorLeft != null)
         {
             OnCloseDoors.AddListener(doorLeft.Close);
             OnOpenDoors.AddListener(doorLeft.Open);

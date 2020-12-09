@@ -61,6 +61,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: ControlsChanged
         m_Mode: 0
         m_Arguments:
@@ -75,6 +76,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: Move
         m_Mode: 0
         m_Arguments:
@@ -90,6 +92,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: Look
         m_Mode: 0
         m_Arguments:
@@ -105,6 +108,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: Shoot
         m_Mode: 0
         m_Arguments:
@@ -160,6 +164,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: Dash
         m_Mode: 0
         m_Arguments:
@@ -172,6 +177,30 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0d4290f6-6aea-4df1-bca9-27b5f45819e1
     m_ActionName: Player/Dash[/Keyboard/space,/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: Reload
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1dd647ac-0177-42f1-bc64-2c8277bb9ea2
+    m_ActionName: Player/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 26212cda-ef17-41df-8a98-638484445fb8
+    m_ActionName: Player/Switch Weapons[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 900e5e9b-83e0-4a13-8555-ac0441b66349
+    m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -204,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  smoothTime: 0.2
+  smoothTime: 0.3
 --- !u!114 &6831206282054965610
 MonoBehaviour:
   m_ObjectHideFlags: 0

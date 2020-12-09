@@ -18,6 +18,7 @@ public abstract class Character : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
     }
 
+
     public virtual void TakeDamage(int damage)
     {
         if (!dead)

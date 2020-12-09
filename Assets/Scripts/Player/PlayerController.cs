@@ -44,6 +44,7 @@ public class PlayerController : Character
     private TrailRenderer trail;
     private float angle;
     private bool holdingFire = false;
+    private bool firstFrame = true;
 
 
     public override void Awake()
@@ -110,7 +111,7 @@ public class PlayerController : Character
             }
         }
 
-        if (!dashActive && !falling && !Physics2D.IsTouching(floor, mainCollider) && Time.frameCount != 1)
+        if (!dashActive && !falling && !Physics2D.IsTouching(floor, mainCollider) && !firstFrame)
             Fall();
 
         if (falling && fallTime < 1)
@@ -132,6 +133,8 @@ public class PlayerController : Character
         {
             StartCoroutine(currentWeapon.Reload());
         }
+
+        firstFrame = false;
     }
 
     private void Update()
@@ -274,9 +277,7 @@ public class PlayerController : Character
         leftHand.gameObject.SetActive(false);
         rightHand.gameObject.SetActive(false);
         player.gravityScale = 30.0f;
-        GetComponent<SortingGroup>().sortingLayerName = "Pit";
-        Physics2D.IgnoreLayerCollision(1, 9);
-        Physics2D.IgnoreLayerCollision(1, 0);
+        GetComponent<SortingGroup>().sortingOrder = -2;
     }
 
     public void LevelChange(Level level)

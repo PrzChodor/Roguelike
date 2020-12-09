@@ -67,8 +67,9 @@ public class HomingProjectile : MonoBehaviour
     private void Destroy()
     {
         particles.Clear();
-        particles.Play();
-        agent.isStopped = true;
+        particles.Play(); 
+        agent.velocity = Vector3.zero;
+        agent.ResetPath();
         sprite.enabled = false;
         trail.enabled = false;
         GameObject.Destroy(gameObject, particles.main.duration);

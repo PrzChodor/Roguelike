@@ -43,15 +43,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Pit
-    uniqueID: 1373936545
-    locked: 0
-  - name: Floor
-    uniqueID: 804033109
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Top
-    uniqueID: 477257589
     locked: 0
