@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(BallSpawner))]
 public class Bomb : Enemy
 {
-    public GameObject explosion;
     public float trigerDistance = 0.7f;
 
     public override void Update()
@@ -27,7 +27,7 @@ public class Bomb : Enemy
     public override void OnDeath()
     {
         base.OnDeath();
-        Instantiate(explosion, this.transform.position, this.transform.rotation);
+        GetComponent<BallSpawner>().Spawn();
         Destroy(gameObject);
     }
 
