@@ -201,6 +201,7 @@ MonoBehaviour:
   health: 4
   maxHealth: 4
   active: 0
+  heart: {fileID: 2787009938955271637, guid: 6ca46989f3fd88948a8d21a54a822948, type: 3}
   trigerDistance: 0.7
 --- !u!114 &278475749567754971
 MonoBehaviour:

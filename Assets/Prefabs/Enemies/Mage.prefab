@@ -235,6 +235,7 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   active: 0
+  heart: {fileID: 2787009938955271637, guid: 6ca46989f3fd88948a8d21a54a822948, type: 3}
   attackCooldown: 5
   projectile: {fileID: 4559098953192897428, guid: 3350d45d8aef60c4c88d686dbeaf21f8,
     type: 3}

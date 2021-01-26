@@ -11,6 +11,7 @@ public class Level : MonoBehaviour
     UnityEvent OnDeactivation;
     UnityEvent OnCloseDoors;
     UnityEvent OnOpenDoors;
+    LevelMaster levelMaster;
     List<GameObject> enemies;
 
     public Door doorLeft;
@@ -28,12 +29,11 @@ public class Level : MonoBehaviour
         OnCloseDoors = new UnityEvent();
         OnOpenDoors = new UnityEvent();
         enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy")).FindAll(g => g.transform.IsChildOf(this.transform));
+        levelMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<LevelMaster>();
     }
 
     private void Start()
     {
-        var levelMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<LevelMaster>();
-
         OnOpenDoors.AddListener(levelMaster.OnCleared);
 
         if (doorLeft != null)
@@ -98,5 +98,18 @@ public class Level : MonoBehaviour
     {
         enemies.ForEach(Destroy);
         enemies.Clear();
+    }
+
+    public void DestroyItems()
+    {
+        var items = new List<GameObject>(GameObject.FindGameObjectsWithTag("Item")).FindAll(g => g.transform.IsChildOf(this.transform));
+        items.ForEach(Destroy);
+        items.Clear();
+    }
+
+    public int ItemsOnExit()
+    {
+        var items = new List<GameObject>(GameObject.FindGameObjectsWithTag("Item")).FindAll(g => g.transform.IsChildOf(this.transform));
+        return items.Count;
     }
 }

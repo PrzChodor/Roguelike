@@ -25,10 +25,7 @@ public class LevelMaster : MonoBehaviour
     private void Start()
     {
         currentLevel.Activate();
-        //rooms = MapGenerator.GenerateMap(123123123);
-
         rooms = MapGenerator.GenerateMap();
-        print(rooms.Count);
     }
 
     public void DeactivateCurrent()
@@ -43,6 +40,9 @@ public class LevelMaster : MonoBehaviour
 
     Level LoadLevel(int id)
     {
+        if (currentLevel.ItemsOnExit() == 0)
+            rooms[currentLevelID].ItemsCollected = true;
+
         Destroy(currentLevel.gameObject);
         currentLevelID = id;
         var room = rooms[id];
@@ -56,8 +56,10 @@ public class LevelMaster : MonoBehaviour
             level.doorLeft.toLevel = room.Left;
         if (room.Right != -1)
             level.doorRight.toLevel = room.Right;
-        if (room.Cleared)
+        if (true)//room.Cleared)
             level.DestroyEnemies();
+        if (room.ItemsCollected)
+            level.DestroyItems();
         return level;
     }
 
@@ -112,7 +114,6 @@ public class LevelMaster : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         currentLevel.land.BuildNavMesh();
         currentLevel.flying.BuildNavMesh();
-        GetComponent<UIManager>().HideInteraction();
         Time.timeScale = 0;
 
         elapsedTime = 0.0f;

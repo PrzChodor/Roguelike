@@ -10684,31 +10684,13 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 6326479858806812118}
     m_ColliderPaths:
-    - - X: 21874900
-        Y: -17499959
-      - X: 21874959
-        Y: -17499900
-      - X: 21875000
-        Y: -17499900
-      - X: 21875000
-        Y: 19999900
-      - X: 21875041
-        Y: 19999900
-      - X: 21875100
-        Y: 19999959
-      - X: 21875100
-        Y: 21250041
-      - X: 21875041
-        Y: 21250100
-      - X: 21874900
-        Y: 21250100
-      - X: 21874900
+    - - X: 21875000
         Y: 22500000
       - X: -31875000
         Y: 22500000
       - X: -31875000
         Y: -20000000
-      - X: 21874900
+      - X: 21875000
         Y: -20000000
     - - X: -30000000
         Y: -17500000
@@ -10720,8 +10702,8 @@ CompositeCollider2D:
         Y: -17500000
   m_CompositePaths:
     m_Paths:
-    - - {x: 2.187461, y: -2}
-      - {x: 2.187461, y: 2.25}
+    - - {x: 2.187471, y: -2}
+      - {x: 2.187471, y: 2.25}
       - {x: -3.1875, y: 2.249971}
       - {x: -3.187471, y: -2}
     - - {x: 2, y: -1.7499707}
@@ -11636,6 +11618,7 @@ Transform:
   - {fileID: 6326479859597446750}
   - {fileID: 6326479860193068383}
   - {fileID: 6326479860405041501}
+  - {fileID: 4004903121629369233}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13052,40 +13035,32 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 6326479860465803131}
     m_ColliderPaths:
-    - - X: 21875100
-        Y: -20000041
-      - X: 21875100
-        Y: 22500041
-      - X: 21875041
-        Y: 22500100
-      - X: -31875041
-        Y: 22500100
-      - X: -31875100
-        Y: 22500041
-      - X: -31875100
-        Y: -20000041
-      - X: -31875041
-        Y: -20000100
-      - X: 21875041
-        Y: -20000100
-    - - X: -29999900
-        Y: -17499900
-      - X: -29999900
-        Y: 19999900
-      - X: 19999900
-        Y: 19999900
-      - X: 19999900
-        Y: -17499900
+    - - X: 21875000
+        Y: 22500000
+      - X: -31875000
+        Y: 22500000
+      - X: -31875000
+        Y: -20000000
+      - X: 21875000
+        Y: -20000000
+    - - X: -30000000
+        Y: -17500000
+      - X: -30000000
+        Y: 20000000
+      - X: 20000000
+        Y: 20000000
+      - X: 20000000
+        Y: -17500000
   m_CompositePaths:
     m_Paths:
-    - - {x: 2.1874747, y: -2.00001}
-      - {x: 2.1874747, y: 2.25001}
-      - {x: -3.18751, y: 2.2499747}
-      - {x: -3.1874747, y: -2.00001}
-    - - {x: 1.99999, y: -1.7499607}
-      - {x: -2.99999, y: -1.7499607}
-      - {x: -2.9999607, y: 1.99999}
-      - {x: 1.99999, y: 1.9999607}
+    - - {x: 2.187471, y: -2}
+      - {x: 2.187471, y: 2.25}
+      - {x: -3.1875, y: 2.249971}
+      - {x: -3.187471, y: -2}
+    - - {x: 2, y: -1.7499707}
+      - {x: -3, y: -1.7499707}
+      - {x: -2.9999707, y: 2}
+      - {x: 2, y: 1.9999707}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!114 &6326479860465803128
@@ -14141,6 +14116,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045e2271ae4208b4383229357b4a2e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &6518179946888816721
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6326479860317011557}
+    m_Modifications:
+    - target: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917746010488814533, guid: 9168f6ede63de9543b152150a7aa7ec4,
+        type: 3}
+      propertyPath: m_Name
+      value: Heart Item
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9168f6ede63de9543b152150a7aa7ec4, type: 3}
+--- !u!4 &4004903121629369233 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7917746010488814528, guid: 9168f6ede63de9543b152150a7aa7ec4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6518179946888816721}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8065011477382522152
 PrefabInstance:
   m_ObjectHideFlags: 0

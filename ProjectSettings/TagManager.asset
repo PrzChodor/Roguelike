@@ -10,6 +10,8 @@ TagManager:
   - Projectile
   - Wall
   - Level
+  - Item
+  - Heart
   layers:
   - Default
   - TransparentFX

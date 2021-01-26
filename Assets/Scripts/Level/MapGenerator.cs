@@ -191,6 +191,7 @@ public class Room
     public int Top { get; set; }
     public string Code { get; set; }
     public bool Cleared { get; set; }
+    public bool ItemsCollected { get; set; }
 
     public Room(List<Tuple<char, int>> tuples, int type)
     {

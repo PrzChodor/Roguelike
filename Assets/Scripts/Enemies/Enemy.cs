@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(NavMeshAgent),typeof(Animator),typeof(Rigidbody2D))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(Rigidbody2D))]
 public abstract class Enemy : Character
 {
     public bool active = false;
@@ -13,6 +13,8 @@ public abstract class Enemy : Character
     protected NavMeshAgent agent;
     protected Animator animator;
     protected Rigidbody2D rb;
+
+    public GameObject heart;
 
     private Level currentLevel;
     private UnityEvent OnThisDeath;
@@ -64,6 +66,14 @@ public abstract class Enemy : Character
     public virtual void OnDeath()
     {
         Deactivate();
+
+        var loot = Random.value;
+        if (loot < 0.25f)
+        {
+            var item = Instantiate(heart, transform.parent);
+            item.transform.position = this.transform.position;
+        }
+
         OnThisDeath.Invoke();
     }
 

@@ -8,6 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerController : Character
 {
@@ -32,6 +33,8 @@ public class PlayerController : Character
     private Rigidbody2D player;
     private Animator animator;
     private Vector2 movement;
+    private Vector2 movDuringDash;
+    private bool movChangedDuringDash;
     private Vector2 direction;
     private Vector2 dash;
     private float dashTime;
@@ -93,6 +96,11 @@ public class PlayerController : Character
                 Physics2D.IgnoreLayerCollision(0, 12, false);
                 dashActive = false;
                 dashTime = dashDuration;
+
+                if (movChangedDuringDash)
+                    movement = movDuringDash;
+                animator.SetFloat("Speed", movement.sqrMagnitude);
+                movChangedDuringDash = false;
             }
         }
         else
@@ -148,6 +156,20 @@ public class PlayerController : Character
         direction = cursor.transform.position;
         direction = Camera.main.ScreenToWorldPoint(direction);
 
+        var collisions = new List<Collider2D>();
+        player.GetContacts(collisions);
+
+        if (collisions.Any(c => c.CompareTag("Door")) && !falling)
+        {
+            var door = (collisions.Find(c => c.CompareTag("Door"))).GetComponent<Door>();
+            if (door.opened)
+                uiManager.ShowInteraction();
+        }
+        else
+        {
+            uiManager.HideInteraction();
+        }
+
         if (currentControls == "Keyboard&Mouse")
         {
             var temp = (direction - player.position);
@@ -187,6 +209,11 @@ public class PlayerController : Character
     {
         if (!dashActive)
             movement = context.ReadValue<Vector2>();
+        else
+        {
+            movChangedDuringDash = true;
+            movDuringDash = context.ReadValue<Vector2>();
+        }
 
         animator.SetFloat("Speed", movement.sqrMagnitude);
     }
@@ -267,6 +294,12 @@ public class PlayerController : Character
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
+        UpdateUI();
+    }
+
+    public void Heal(int amount)
+    {
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
         UpdateUI();
     }
 
