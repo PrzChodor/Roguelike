@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Level : MonoBehaviour
@@ -10,13 +11,15 @@ public class Level : MonoBehaviour
     UnityEvent OnDeactivation;
     UnityEvent OnCloseDoors;
     UnityEvent OnOpenDoors;
-    int enemyCount;
+    List<GameObject> enemies;
 
     public Door doorLeft;
     public Door doorRight;
     public Door doorTop;
     public Door doorBottom;
     public CompositeCollider2D floor;
+    public NavMeshSurface2d land;
+    public NavMeshSurface2d flying;
 
     private void Awake()
     {
@@ -24,12 +27,14 @@ public class Level : MonoBehaviour
         OnDeactivation = new UnityEvent();
         OnCloseDoors = new UnityEvent();
         OnOpenDoors = new UnityEvent();
+        enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy")).FindAll(g => g.transform.IsChildOf(this.transform));
     }
 
     private void Start()
     {
-        var enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy")).FindAll(g => g.transform.IsChildOf(this.transform));
-        enemyCount = enemies.Count;
+        var levelMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<LevelMaster>();
+
+        OnOpenDoors.AddListener(levelMaster.OnCleared);
 
         if (doorLeft != null)
         {
@@ -58,21 +63,19 @@ public class Level : MonoBehaviour
             OnActivation.AddListener(enemy.Activate);
             OnDeactivation.AddListener(enemy.Deactivate);
         }
-
-        Activate();
     }
 
     public void OnEnemyDeath()
     {
-        enemyCount--;
-        if (enemyCount <= 0)
+        enemies.RemoveAt(0);
+        if (enemies.Count <= 0)
             OpenDoors();
     }
 
     public void Activate()
     {
         OnActivation.Invoke();
-        if (enemyCount > 0)
+        if (enemies.Count > 0)
             CloseDoors();
     }
 
@@ -89,5 +92,11 @@ public class Level : MonoBehaviour
     private void CloseDoors()
     {
         OnCloseDoors.Invoke();
+    }
+
+    public void DestroyEnemies()
+    {
+        enemies.ForEach(Destroy);
+        enemies.Clear();
     }
 }

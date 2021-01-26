@@ -25,9 +25,6 @@ public class Weapon : MonoBehaviour
         animator = GetComponent<Animator>();
         firePoint = transform.GetChild(0).transform;
         onReloaded = new UnityEvent();
-    }
-    private void Start()
-    {
         currentAmmo = maxAmmo;
     }
 
@@ -43,7 +40,7 @@ public class Weapon : MonoBehaviour
         fired.GetComponent<Bullet>().damage = damage;
         currentAmmo--;
 
-        yield return new WaitForSeconds(1/fireRate);
+        yield return new WaitForSeconds(1 / fireRate);
 
         isShooting = false;
     }

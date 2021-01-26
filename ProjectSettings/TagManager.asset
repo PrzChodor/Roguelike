@@ -9,6 +9,7 @@ TagManager:
   - GameMaster
   - Projectile
   - Wall
+  - Level
   layers:
   - Default
   - TransparentFX

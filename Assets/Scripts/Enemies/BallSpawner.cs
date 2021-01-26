@@ -16,6 +16,7 @@ public class BallSpawner : MonoBehaviour
         for (int i = 0; i < numberOfBalls; i++)
         {
             var ball = GameObject.Instantiate(balls, transform.position, Quaternion.identity);
+            ball.transform.parent = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<LevelMaster>().currentLevel.transform;
             ball.GetComponent<Rigidbody2D>().AddForce(dir.Rotate(i * angle) * speed);
         }
     }

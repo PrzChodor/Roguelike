@@ -41,7 +41,8 @@ public class Mage : Enemy
         transform.GetChild(0).up = player.position - (Vector2)transform.GetChild(0).position;
         foreach (var point in castPoints)
         {
-            GameObject.Instantiate(projectile, point.position, Quaternion.identity);
+            var proj = GameObject.Instantiate(projectile, point.position, Quaternion.identity);
+            proj.transform.parent = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<LevelMaster>().currentLevel.transform;
         }
     }
 

@@ -22,13 +22,23 @@ public class UIManager : MonoBehaviour
     public GameObject heartHalf;
     public GameObject healthBarBase;
     public GameObject healthBarFull;
+    [Space]
+    public CanvasGroup interactButton;
 
+    private GameObject player;
     private int lastMaxHealth;
     private int lastMaxDashes;
 
     private void Awake()
     {
         deathScreen.SetActive(false);
+        HideInteraction();
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void Update()
+    {
+        interactButton.transform.position = Camera.main.WorldToScreenPoint(player.transform.position + new Vector3(0, 0.7f));
     }
 
     public void ShowDeathScreen()
@@ -97,5 +107,15 @@ public class UIManager : MonoBehaviour
 
         if (health % 2 == 1)
             GameObject.Instantiate(heartHalf, healthBarFull.transform);
+    }
+
+    public void ShowInteraction()
+    {
+        interactButton.alpha = 1;
+    }
+
+    public void HideInteraction()
+    {
+        interactButton.alpha = 0;
     }
 }

@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
     {
         if (!playerDead)
             UpdateCamera();
-        else if(!zoomed)
+        else if (!zoomed)
             ZoomOnPlayer();
     }
 
@@ -56,14 +56,13 @@ public class CameraController : MonoBehaviour
         }
 
         lerp += Time.deltaTime / duration;
-        Camera.main.GetComponent<PixelPerfectCamera>().assetsPPU = (int)Mathf.Lerp(24, 72, lerp);
+        Camera.main.GetComponent<PixelPerfectCamera>().assetsPPU = (int)Mathf.Lerp(32, 72, lerp);
         deathScreen.alpha = Mathf.Lerp(0, 1, 2 * (lerp - 0.5f));
 
         if (!falling)
         {
             Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, target, lerp);
-            light2D.pointLightInnerRadius = Mathf.Lerp(2, 0, lerp);
-            light2D.pointLightOuterRadius = Mathf.Lerp(6, 2, lerp);
+            light2D.pointLightOuterRadius = Mathf.Lerp(8, 2, lerp);
             background.color = Color.Lerp(new Color(0.17f, 0.17f, 0.17f, 0), new Color(0.17f, 0.17f, 0.17f, 1), lerp);
         }
         else

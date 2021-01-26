@@ -67,8 +67,8 @@ namespace UnityEngine.AI
             switch (CollectObjects)
             {
                 case CollectObjects2d.Children: return new[] { parent };
-                case CollectObjects2d.Volume: 
-                case CollectObjects2d.All: 
+                case CollectObjects2d.Volume:
+                case CollectObjects2d.All:
                 default:
                     return GameObject.FindObjectsOfType<Grid>().Select(g => g.gameObject).ToArray();
             }
@@ -110,7 +110,6 @@ namespace UnityEngine.AI
                             tilemap.CompressBounds();
                         }
 
-                        Debug.Log($"Walkable Bounds [{tilemap.name}]: {tilemap.localBounds}");
                         var box = BoxBoundSource(NavMeshSurface2d.GetWorldBounds(tilemap.transform.localToWorldMatrix, tilemap.localBounds));
                         box.area = builder.defaultArea;
                         sources.Add(box);
@@ -142,7 +141,7 @@ namespace UnityEngine.AI
                     }
                 }
             }
-            Debug.Log("Sources " + sources.Count);
+            //Debug.Log("Sources " + sources.Count);
         }
 
         private static void CollectSources(List<NavMeshBuildSource> sources, SpriteRenderer sprite, int area, NavMeshBuilder2dWrapper builder)
@@ -187,7 +186,6 @@ namespace UnityEngine.AI
                 shape = NavMeshBuildSourceShape.Mesh,
                 area = area
             };
-            Debug.Log("iks");
             Mesh mesh;
             mesh = builder.GetMesh(collider);
             if (mesh == null)

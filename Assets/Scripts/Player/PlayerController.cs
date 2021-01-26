@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,12 +25,15 @@ public class PlayerController : Character
 
     [HideInInspector]
     public bool falling = false;
+    [HideInInspector]
+    public bool firstFrame = true;
+    [HideInInspector]
+    public bool dashActive = false;
     private Rigidbody2D player;
     private Animator animator;
     private Vector2 movement;
     private Vector2 direction;
     private Vector2 dash;
-    private bool dashActive = false;
     private float dashTime;
     private float dashCooldownTime;
     private int dashesLeft;
@@ -45,7 +49,6 @@ public class PlayerController : Character
     private TrailRenderer trail;
     private float angle;
     private bool holdingFire = false;
-    private bool firstFrame = true;
 
 
     public override void Awake()
@@ -127,12 +130,12 @@ public class PlayerController : Character
             }
         }
 
-        if(holdingFire && !currentWeapon.isShooting && !dead && currentWeapon.currentAmmo != 0 && !currentWeapon.isReloading)
+        if (holdingFire && !currentWeapon.isShooting && !dead && currentWeapon.currentAmmo != 0 && !currentWeapon.isReloading)
         {
             StartCoroutine(currentWeapon.Shoot(angle));
             UpdateUI();
         }
-        else if(currentWeapon.currentAmmo == 0 && !currentWeapon.isReloading && !currentWeapon.isShooting)
+        else if (currentWeapon.currentAmmo == 0 && !currentWeapon.isReloading && !currentWeapon.isShooting)
         {
             StartCoroutine(currentWeapon.Reload());
         }
@@ -157,16 +160,16 @@ public class PlayerController : Character
 
                 if (temp.x < -0.1)
                 {
-                    leftHand.localPosition = new Vector2(-0.2f, 0.2f);
-                    rightHand.localPosition = new Vector2(0.15f, 0.15f);
+                    leftHand.localPosition = new Vector2(-0.18f, 0.15f);
+                    rightHand.localPosition = new Vector2(0.15f, 0.12f);
                     currentWeapon.transform.parent = leftHand;
                     currentWeapon.transform.localPosition = Vector3.zero;
                     currentWeapon.transform.localScale = new Vector3(1, 1, 1);
                 }
                 else if (temp.x > 0.1)
                 {
-                    leftHand.localPosition = new Vector2(-0.15f, 0.15f);
-                    rightHand.localPosition = new Vector2(0.2f, 0.2f);
+                    leftHand.localPosition = new Vector2(-0.15f, 0.12f);
+                    rightHand.localPosition = new Vector2(0.18f, 0.15f);
                     currentWeapon.transform.parent = rightHand;
                     currentWeapon.transform.localPosition = Vector3.zero;
                     currentWeapon.transform.localScale = new Vector3(1, -1, 1);
@@ -178,27 +181,6 @@ public class PlayerController : Character
                 currentWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
             }
         }
-        /*else if(currentControls == "Gamepad")
-        {
-            animator.SetFloat("Horizontal", direction.x);
-            animator.SetFloat("Vertical", direction.y);
-
-            if (direction.x < -0.1)
-            {
-                hand.localPosition = new Vector2(-0.2f, 0.2f);
-                currentWeapon.transform.localScale = new Vector3(1, 1, 1);
-            }
-            else if (direction.x > 0.1)
-            {
-                hand.localPosition = new Vector2(0.2f, 0.2f);
-                currentWeapon.transform.localScale = new Vector3(1, -1, 1);
-            }
-
-            var gunPoint = direction - (Vector2)currentWeapon.firePoint.position;
-            gunPoint.Normalize();
-            var angle = Vector2.SignedAngle(Vector2.left, gunPoint);
-            currentWeapon.transform.rotation = Quaternion.Euler(0, 0, angle);
-        }*/
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -218,9 +200,24 @@ public class PlayerController : Character
             direction = (temp != new Vector2(0, 0) ? temp : direction);
         }
 
-        else if (currentControls == "Keyboard&Mouse")
+        else if (currentControls == "Keyboard&Mouse" && cursor != null)
         {
             cursor.transform.position = context.ReadValue<Vector2>();
+        }
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if (context.started && !falling)
+        {
+            var collisions = new List<Collider2D>();
+            player.GetContacts(collisions);
+
+            if (collisions.Any(c => c.CompareTag("Door")))
+            {
+                var door = (collisions.Find(c => c.CompareTag("Door"))).GetComponent<Door>();
+                door.Enter();
+            }
         }
     }
 
