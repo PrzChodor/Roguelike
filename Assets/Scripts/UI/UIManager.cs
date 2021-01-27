@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     [Space]
     public CanvasGroup interactButton;
 
+
     private GameObject player;
     private int lastMaxHealth;
     private int lastMaxDashes;
@@ -118,4 +119,6 @@ public class UIManager : MonoBehaviour
     {
         interactButton.alpha = 0;
     }
+
+
 }

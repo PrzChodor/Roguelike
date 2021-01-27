@@ -56,7 +56,7 @@ public class LevelMaster : MonoBehaviour
             level.doorLeft.toLevel = room.Left;
         if (room.Right != -1)
             level.doorRight.toLevel = room.Right;
-        if (true)//room.Cleared)
+        if (room.Cleared)
             level.DestroyEnemies();
         if (room.ItemsCollected)
             level.DestroyItems();
@@ -89,17 +89,21 @@ public class LevelMaster : MonoBehaviour
         var newPosition = new Vector3();
         switch (direction)
         {
-            case "Door T":
-                newPosition = currentLevel.doorTop.transform.GetChild(0).position;
-                break;
             case "Door B":
                 newPosition = currentLevel.doorBottom.transform.GetChild(0).position;
-                break;
-            case "Door R":
-                newPosition = currentLevel.doorRight.transform.GetChild(0).position;
+                GetComponent<MapManager>().AddLevel(level, rooms[level].Code.Substring(0, rooms[level].Code.IndexOf(" ")), 0);
                 break;
             case "Door L":
                 newPosition = currentLevel.doorLeft.transform.GetChild(0).position;
+                GetComponent<MapManager>().AddLevel(level, rooms[level].Code.Substring(0, rooms[level].Code.IndexOf(" ")), 1);
+                break;
+            case "Door R":
+                newPosition = currentLevel.doorRight.transform.GetChild(0).position;
+                GetComponent<MapManager>().AddLevel(level, rooms[level].Code.Substring(0, rooms[level].Code.IndexOf(" ")), 2);
+                break;
+            case "Door T":
+                newPosition = currentLevel.doorTop.transform.GetChild(0).position;
+                GetComponent<MapManager>().AddLevel(level, rooms[level].Code.Substring(0, rooms[level].Code.IndexOf(" ")), 3);
                 break;
             default:
                 break;

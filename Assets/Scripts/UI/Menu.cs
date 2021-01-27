@@ -4,40 +4,38 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameMaster : MonoBehaviour
+public class Menu : MonoBehaviour
 {
     public Image blackScreen;
 
-    private void Start()
+    public void Play()
     {
         StartCoroutine(Transition());
     }
 
     public void Exit()
     {
-        SceneManager.LoadScene("Menu");
-    }
+#if UNITY_STANDALONE
+        Application.Quit();
+#endif
 
-    public void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
-
 
     IEnumerator Transition()
     {
-        Time.timeScale = 0;
-
         float elapsedTime = 0.0f;
 
         while (elapsedTime < 1.0f)
         {
-            blackScreen.color = Color.Lerp(new Color(0, 0, 0, 1), new Color(0, 0, 0, 0), elapsedTime);
+            blackScreen.color = Color.Lerp(new Color(0, 0, 0, 0), new Color(0, 0, 0, 1), elapsedTime);
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
 
-        Time.timeScale = 1;
+        SceneManager.LoadScene("Game");
         yield return null;
     }
 }

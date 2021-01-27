@@ -68,7 +68,7 @@ public abstract class Enemy : Character
         Deactivate();
 
         var loot = Random.value;
-        if (loot < 0.25f)
+        if (loot < 0.15f)
         {
             var item = Instantiate(heart, transform.parent);
             item.transform.position = this.transform.position;
