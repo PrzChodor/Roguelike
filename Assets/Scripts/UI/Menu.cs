@@ -7,21 +7,23 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     public Image blackScreen;
+    private AudioSource source;
+
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     public void Play()
     {
+        source.Play();
         StartCoroutine(Transition());
     }
 
     public void Exit()
     {
-#if UNITY_STANDALONE
-        Application.Quit();
-#endif
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
+        GetComponent<AudioSource>().Play();
+        StartCoroutine(OnExit());
     }
 
     IEnumerator Transition()
@@ -37,5 +39,16 @@ public class Menu : MonoBehaviour
 
         SceneManager.LoadScene("Game");
         yield return null;
+    }
+    IEnumerator OnExit()
+    {
+        yield return new WaitWhile(() => source.isPlaying);
+#if UNITY_STANDALONE
+        Application.Quit();
+#endif
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }

@@ -11,6 +11,9 @@ public class Ball : MonoBehaviour
     private Rigidbody2D rb;
     private bool destroyed;
 
+    public AudioClip despawn;
+    public AudioClip spawn;
+
     private void Awake()
     {
         particles = GetComponent<ParticleSystem>();
@@ -21,6 +24,7 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         particles.Stop();
+        GetComponent<AudioSource>().PlayOneShot(spawn);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -41,6 +45,7 @@ public class Ball : MonoBehaviour
 
     private void Destroy()
     {
+        GetComponent<AudioSource>().PlayOneShot(despawn);
         destroyed = true;
         particles.Play();
         rb.velocity = Vector2.zero;

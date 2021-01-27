@@ -38,6 +38,7 @@ public class Mage : Enemy
     }
     public void CastProjectiles()
     {
+        GetComponent<AudioSource>().Play();
         transform.GetChild(0).up = player.position - (Vector2)transform.GetChild(0).position;
         foreach (var point in castPoints)
         {

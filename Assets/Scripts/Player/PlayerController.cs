@@ -23,6 +23,10 @@ public class PlayerController : Character
     public Weapon currentWeapon;
     [Space]
     public Image cursor;
+    [Space]
+    public AudioClip dashClip;
+    public AudioClip dashRecharge;
+    public AudioClip heal;
 
     [HideInInspector]
     public bool falling = false;
@@ -30,6 +34,7 @@ public class PlayerController : Character
     public bool firstFrame = true;
     [HideInInspector]
     public bool dashActive = false;
+
     private Rigidbody2D player;
     private Animator animator;
     private Vector2 movement;
@@ -119,6 +124,7 @@ public class PlayerController : Character
             else
             {
                 dashCooldownTime = 0;
+                GetComponent<AudioSource>().PlayOneShot(dashRecharge);
                 dashesLeft++;
                 UpdateUI();
             }
@@ -252,6 +258,7 @@ public class PlayerController : Character
     {
         if (movement.sqrMagnitude != 0 && !dashActive && dashesLeft > 0 && context.started && !dead)
         {
+            GetComponent<AudioSource>().PlayOneShot(dashClip);
             dash = movement * dashSpeed;
             dashActive = true;
             dashesLeft--;
@@ -300,6 +307,7 @@ public class PlayerController : Character
     public void Heal(int amount)
     {
         health = Mathf.Clamp(health + amount, 0, maxHealth);
+        GetComponent<AudioSource>().PlayOneShot(heal);
         UpdateUI();
     }
 

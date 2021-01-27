@@ -87,11 +87,13 @@ public class Level : MonoBehaviour
     private void OpenDoors()
     {
         OnOpenDoors.Invoke();
+        levelMaster.doorSound.Play(0);
     }
 
     private void CloseDoors()
     {
         OnCloseDoors.Invoke();
+        levelMaster.doorSound.Play(0);
     }
 
     public void DestroyEnemies()

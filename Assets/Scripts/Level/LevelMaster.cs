@@ -12,6 +12,7 @@ public class LevelMaster : MonoBehaviour
     public Level currentLevel;
     public PlayerController player;
     public Image blackScreen;
+    public AudioSource doorSound;
     private int currentLevelID;
     private List<Room> rooms;
 

@@ -11,6 +11,8 @@ public class HomingProjectile : MonoBehaviour
     public float activeTime;
     public int damage;
     public GameObject target;
+    public AudioClip activate;
+    public AudioClip despawn;
 
     private NavMeshAgent agent;
     private ParticleSystem particles;
@@ -38,13 +40,14 @@ public class HomingProjectile : MonoBehaviour
 
     void Update()
     {
-        if(active)
+        if (active)
             agent.SetDestination(target.transform.position);
     }
 
     IEnumerator OnCreate()
     {
         yield return new WaitForSeconds(timeToActivation);
+        GetComponent<AudioSource>().PlayOneShot(activate);
         active = true;
         yield return new WaitForSeconds(activeTime);
         Destroy();
@@ -70,9 +73,10 @@ public class HomingProjectile : MonoBehaviour
 
     private void Destroy()
     {
+        GetComponent<AudioSource>().PlayOneShot(despawn);
         destroyed = true;
         particles.Clear();
-        particles.Play(); 
+        particles.Play();
         agent.velocity = Vector3.zero;
         agent.ResetPath();
         sprite.enabled = false;
