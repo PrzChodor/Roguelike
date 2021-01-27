@@ -1242,8 +1242,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1562601560}
   - {fileID: 1801001839}
+  - {fileID: 1562601560}
   m_Father: {fileID: 2067510365}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3416,7 +3416,7 @@ GameObject:
   - component: {fileID: 1562601560}
   - component: {fileID: 1562601561}
   m_Layer: 5
-  m_Name: Map
+  m_Name: Map Layer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3435,7 +3435,7 @@ RectTransform:
   m_Children:
   - {fileID: 1086844759}
   m_Father: {fileID: 538165290}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3887,6 +3887,8 @@ MonoBehaviour:
   - {fileID: 7374714337500924923, guid: d3af93922a9bdbd4a97ea06d08230304, type: 3}
   - {fileID: 7826211055377133185, guid: 5037f1a50ca5e0d499052bff7cbf8335, type: 3}
   map: {fileID: 538165291}
+  emptyLayer: {fileID: 1515342223403667863, guid: 57dab1846faac99438844c41435c26bb,
+    type: 3}
 --- !u!4 &1708888209
 Transform:
   m_ObjectHideFlags: 0
@@ -4301,7 +4303,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 538165290}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5026,7 +5028,7 @@ PrefabInstance:
     - target: {fileID: 8329850672103582899, guid: 7d38cf71510279d448a79c89486772a2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8329850672103582899, guid: 7d38cf71510279d448a79c89486772a2,
         type: 3}

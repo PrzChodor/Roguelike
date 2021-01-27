@@ -88,23 +88,24 @@ public class LevelMaster : MonoBehaviour
 
         currentLevel = LoadLevel(level);
         var newPosition = new Vector3();
+        var type = (rooms[level].Code.Contains(" ")) ? rooms[level].Code.Substring(0, rooms[level].Code.IndexOf(" ")) : rooms[level].Code;
         switch (direction)
         {
             case "Door B":
                 newPosition = currentLevel.doorBottom.transform.GetChild(0).position;
-                GetComponent<MapManager>().AddLevel(level, rooms[level].Code.Substring(0, rooms[level].Code.IndexOf(" ")), 0);
+                GetComponent<MapManager>().AddLevel(level, type, 0);
                 break;
             case "Door L":
                 newPosition = currentLevel.doorLeft.transform.GetChild(0).position;
-                GetComponent<MapManager>().AddLevel(level, rooms[level].Code.Substring(0, rooms[level].Code.IndexOf(" ")), 1);
+                GetComponent<MapManager>().AddLevel(level, type, 1);
                 break;
             case "Door R":
                 newPosition = currentLevel.doorRight.transform.GetChild(0).position;
-                GetComponent<MapManager>().AddLevel(level, rooms[level].Code.Substring(0, rooms[level].Code.IndexOf(" ")), 2);
+                GetComponent<MapManager>().AddLevel(level, type, 2);
                 break;
             case "Door T":
                 newPosition = currentLevel.doorTop.transform.GetChild(0).position;
-                GetComponent<MapManager>().AddLevel(level, rooms[level].Code.Substring(0, rooms[level].Code.IndexOf(" ")), 3);
+                GetComponent<MapManager>().AddLevel(level, type, 3);
                 break;
             default:
                 break;

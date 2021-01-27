@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Linq;
 
 public class MapManager : MonoBehaviour
 {
     public List<GameObject> mapCells;
     public CanvasGroup map;
-    private Dictionary<int, int> idPairs;
+    public GameObject emptyLayer;
+    private Dictionary<int, (int id, int layer)> LayerAndID;
     private RectTransform currentLevel;
+    private int currentLayer = 1;
 
     private void Start()
     {
-        idPairs = new Dictionary<int, int>();
-        idPairs.Add(0, 0);
-        currentLevel = map.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>();
+        LayerAndID = new Dictionary<int, (int, int)>();
+        LayerAndID.Add(0, (0, currentLayer));
+        currentLevel = map.transform.GetChild(currentLayer).GetChild(0).GetComponent<RectTransform>();
         HideMap();
     }
 
@@ -45,15 +48,18 @@ public class MapManager : MonoBehaviour
 
     public void AddLevel(int id, string type, int direction)
     {
-        if (idPairs.ContainsKey(id))
+        if (LayerAndID.ContainsKey(id))
         {
-            currentLevel = map.transform.GetChild(0).GetChild(idPairs[id]).GetComponent<RectTransform>();
+            currentLevel = map.transform.GetChild(LayerAndID[id].layer).GetChild(LayerAndID[id].id).GetComponent<RectTransform>();
+            currentLayer = LayerAndID[id].layer;
             AdjustToCurrent();
+            ShowLayer();
         }
         else
         {
-            idPairs.Add(id, map.transform.GetChild(0).childCount);
-            var newLevel = Instantiate(Resources.Load($"Map/{type}") as GameObject, map.transform.GetChild(0));
+            FindGoodLayer(direction);
+            LayerAndID.Add(id, (map.transform.GetChild(currentLayer).childCount, currentLayer));
+            var newLevel = Instantiate(Resources.Load($"Map/{type}") as GameObject, map.transform.GetChild(currentLayer));
 
             switch (direction)
             {
@@ -73,13 +79,72 @@ public class MapManager : MonoBehaviour
                     break;
             }
 
-            currentLevel = map.transform.GetChild(0).GetChild(idPairs[id]).GetComponent<RectTransform>();
+            currentLevel = map.transform.GetChild(LayerAndID[id].layer).GetChild(LayerAndID[id].id).GetComponent<RectTransform>();
             AdjustToCurrent();
+            ShowLayer();
         }
     }
 
     private void AdjustToCurrent()
     {
-        map.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = -currentLevel.anchoredPosition;
+        for (int i = 1; i < map.transform.childCount; i++)
+        {
+            map.transform.GetChild(i).GetComponent<RectTransform>().anchoredPosition = -currentLevel.anchoredPosition;
+        }
+    }
+
+    private void FindGoodLayer(int direction)
+    {
+        Vector2 newPosition = Vector2.zero;
+
+        switch (direction)
+        {
+            case 0:
+                newPosition = currentLevel.anchoredPosition + new Vector2(0, 70);
+                break;
+            case 1:
+                newPosition = currentLevel.anchoredPosition + new Vector2(70, 0);
+                break;
+            case 2:
+                newPosition = currentLevel.anchoredPosition - new Vector2(70, 0);
+                break;
+            case 3:
+                newPosition = currentLevel.anchoredPosition - new Vector2(0, 70);
+                break;
+            default:
+                break;
+        }
+
+        while (true)
+        {
+            var samePosition = 0;
+
+            foreach (Transform child in map.transform.GetChild(currentLayer))
+            {
+                if (child.GetComponent<RectTransform>().anchoredPosition == newPosition)
+                {
+                    samePosition++;
+                }
+            }
+
+            if (samePosition == 0)
+                break;
+            else
+            {
+                if (map.transform.childCount - 1 == currentLayer)
+                    Instantiate(emptyLayer, map.transform);
+                currentLayer++;
+            }
+        }
+    }
+
+    private void ShowLayer()
+    {
+        for (int i = 1; i < map.transform.childCount; i++)
+        {
+            map.transform.GetChild(i).GetComponent<CanvasGroup>().alpha = 0;
+        }
+
+        map.transform.GetChild(currentLayer).GetComponent<CanvasGroup>().alpha = 0.7f;
     }
 }

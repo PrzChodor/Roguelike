@@ -216,5 +216,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balls: {fileID: 3946011773236214287, guid: 11bb526583d5ae24eb00fd5270a86812, type: 3}
-  numberOfBalls: 8
+  numberOfBalls: 16
   speed: 200

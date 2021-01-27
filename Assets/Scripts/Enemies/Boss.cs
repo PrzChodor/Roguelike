@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mage : Enemy
+public class Boss : Enemy
 {
     public float attackCooldown;
     public GameObject projectile;
@@ -37,26 +37,10 @@ public class Mage : Enemy
         sprite.flipX = dir < 0;
     }
 
-    public void CastProjectiles()
-    {
-        GetComponent<AudioSource>().Play();
-        transform.GetChild(0).up = player.position - (Vector2)transform.GetChild(0).position;
-        foreach (var point in castPoints)
-        {
-            var proj = GameObject.Instantiate(projectile, point.position, Quaternion.identity);
-            proj.transform.parent = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<LevelMaster>().currentLevel.transform;
-        }
-    }
-
-    public override void OnDeath()
-    {
-        base.OnDeath();
-    }
-
     IEnumerator OnAttack()
     {
         attacked = true;
-        animator.SetTrigger("Attack");
+        animator.SetTrigger("Action" + Random.Range(0, 4));
         yield return new WaitForSeconds(attackCooldown);
         attacked = false;
     }
