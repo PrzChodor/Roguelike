@@ -8,6 +8,8 @@ public class Menu : MonoBehaviour
 {
     public Image blackScreen;
     private AudioSource source;
+    public GameObject mainMenu;
+    public GameObject optionsMenu;
 
     private void Awake()
     {
@@ -22,8 +24,33 @@ public class Menu : MonoBehaviour
 
     public void Exit()
     {
-        GetComponent<AudioSource>().Play();
+        source.Play();
         StartCoroutine(OnExit());
+    }
+
+    public void Options()
+    {
+        source.Play();
+        mainMenu.SetActive(false);
+        optionsMenu.SetActive(true);
+    }
+    public void MainMenu()
+    {
+        source.Play();
+        mainMenu.SetActive(true);
+        optionsMenu.SetActive(false);
+    }
+
+    public void ShowTab(int tab)
+    {
+        source.Play();
+        for (int i = 0; i < 3; i++)
+        {
+            optionsMenu.transform.GetChild(i).gameObject.SetActive(false);
+            optionsMenu.transform.GetChild(3).GetChild(i).GetComponent<Button>().interactable = true;
+        }
+        optionsMenu.transform.GetChild(tab).gameObject.SetActive(true);
+        optionsMenu.transform.GetChild(3).GetChild(tab).GetComponent<Button>().interactable = false;
     }
 
     IEnumerator Transition()

@@ -8,7 +8,6 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 
 public class PlayerController : Character
 {
