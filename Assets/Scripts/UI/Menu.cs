@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -10,10 +12,16 @@ public class Menu : MonoBehaviour
     private AudioSource source;
     public GameObject mainMenu;
     public GameObject optionsMenu;
+    public AudioMixer mixer;
 
     private void Awake()
     {
         source = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        LoadSettings();
     }
 
     public void Play()
@@ -77,5 +85,40 @@ public class Menu : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
+    }
+
+    public void LoadSettings()
+    {
+        var rebinds = PlayerPrefs.GetString("rebinds");
+        GetComponent<PlayerInput>().actions.LoadBindingOverridesFromJson(rebinds);
+
+        if (PlayerPrefs.HasKey("width") && PlayerPrefs.HasKey("fullScreenMode"))
+            Screen.SetResolution(PlayerPrefs.GetInt("width"), PlayerPrefs.GetInt("height"), (FullScreenMode)PlayerPrefs.GetInt("fullScreenMode"), PlayerPrefs.GetInt("refreshRate"));
+        else if (PlayerPrefs.HasKey("width"))
+            Screen.SetResolution(PlayerPrefs.GetInt("width"), PlayerPrefs.GetInt("height"), Screen.fullScreenMode, PlayerPrefs.GetInt("refreshRate"));
+        else if (PlayerPrefs.HasKey("fullScreenMode"))
+            Screen.fullScreenMode = (FullScreenMode)PlayerPrefs.GetInt("fullScreenMode");
+
+
+        if (PlayerPrefs.HasKey("vSyncCount"))
+            QualitySettings.vSyncCount = PlayerPrefs.GetInt("vSyncCount");
+        else
+            QualitySettings.vSyncCount = 0;
+
+
+        if (PlayerPrefs.HasKey("MasterVolume"))
+            mixer.SetFloat("MasterVolume", Mathf.Log10(PlayerPrefs.GetFloat("MasterVolume")) * 20);
+        else
+            mixer.SetFloat("MasterVolume", Mathf.Log10(0.5f) * 20);
+
+        if (PlayerPrefs.HasKey("MusicVolume"))
+            mixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume")) * 20);
+        else
+            mixer.SetFloat("MusicVolume", Mathf.Log10(0.5f) * 20);
+
+        if (PlayerPrefs.HasKey("SFXVolume"))
+            mixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume")) * 20);
+        else
+            mixer.SetFloat("SFXVolume", Mathf.Log10(0.5f) * 20);
     }
 }
