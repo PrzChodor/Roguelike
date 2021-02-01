@@ -287,6 +287,7 @@ public class PlayerController : Character
 
     public override void Die()
     {
+        MusicPlayer.instance.OnDeath();
         health = 0;
         leftHand.gameObject.SetActive(false);
         rightHand.gameObject.SetActive(false);

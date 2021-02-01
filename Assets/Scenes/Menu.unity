@@ -8716,7 +8716,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 21747bf80c29b6846b8365ad35e9033f, type: 3}
   - {fileID: 8300000, guid: dddc2e8da90831147b6bdcf275c5f5e3, type: 3}
   - {fileID: 8300000, guid: 3285bdc07e4e196499b5496ad26c7e2d, type: 3}
-  deathMusic: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: feb221e23534c9c47a8fcb8854263d49, type: 3}
+  deathMusic: {fileID: 8300000, guid: f35fb62c0f73a194f98f5468b094214e, type: 3}
 --- !u!4 &833600524
 Transform:
   m_ObjectHideFlags: 0

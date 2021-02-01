@@ -7,6 +7,7 @@ public class MusicPlayer : MonoBehaviour
 {
     public AudioClip menuMusic;
     public List<AudioClip> gameMusic;
+    public AudioClip deathSound;
     public AudioClip deathMusic;
 
     public static MusicPlayer instance;
@@ -45,7 +46,21 @@ public class MusicPlayer : MonoBehaviour
             audioSource.Play();
             audioSource.loop = true;
         }
-        print(scene.name);
+    }
+
+    public void OnDeath()
+    {
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+        audioSource.PlayOneShot(deathSound);
+        Invoke("PlayDeathMusic", deathSound.length + 0.1f);
+    }
+
+    void PlayDeathMusic()
+    {
+        audioSource.clip = deathMusic;
+        audioSource.Play();
+        audioSource.loop = true;
     }
 
     void playRandomMusic()
