@@ -30,7 +30,7 @@ public class RebindKey : MonoBehaviour
         rebindOperation.OnPotentialMatch(
             operation =>
             {
-                var icon = Resources.Load<Sprite>($"KeyIcons/{operation.candidates[0].displayName}");
+                var icon = Resources.Load<Sprite>($"KeyIcons/{operation.candidates[0].displayName.Replace("\\", "BackSlash").Replace(".", "Dot").Replace("/", "Slash")}");
                 if (icon == null)
                 {
                     again = true;
