@@ -36,6 +36,7 @@ public class GameMaster : MonoBehaviour
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
+        blackScreen.color = new Color(0, 0, 0, 0);
 
         Time.timeScale = 1;
         yield return null;

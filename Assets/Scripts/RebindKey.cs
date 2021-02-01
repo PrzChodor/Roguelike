@@ -19,6 +19,7 @@ public class RebindKey : MonoBehaviour
 
     public void Rebind()
     {
+        GetComponent<AudioSource>().Play();
         var again = false;
         inputAction.action.Disable();
         rebindOverlay.SetActive(true);

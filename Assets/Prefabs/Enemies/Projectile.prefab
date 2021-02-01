@@ -264,8 +264,8 @@ MonoBehaviour:
   activeTime: 3
   damage: 1
   target: {fileID: 0}
-  activate: {fileID: 8300000, guid: fcaf5cb907c2293498a3f6a5bbfab4c9, type: 3}
-  despawn: {fileID: 8300000, guid: a2cb83d3a315e0f409756f37af652313, type: 3}
+  activate: {fileID: 8300000, guid: 88b62f516d89d5f49ae0cb242e5eb531, type: 3}
+  despawn: {fileID: 8300000, guid: 73c69388c1512ea479c1543e478211cb, type: 3}
 --- !u!198 &3881530620669913363
 ParticleSystem:
   m_ObjectHideFlags: 0

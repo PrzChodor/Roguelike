@@ -5038,8 +5038,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  despawn: {fileID: 8300000, guid: a2cb83d3a315e0f409756f37af652313, type: 3}
-  spawn: {fileID: 8300000, guid: fcaf5cb907c2293498a3f6a5bbfab4c9, type: 3}
+  despawn: {fileID: 8300000, guid: 73c69388c1512ea479c1543e478211cb, type: 3}
+  spawn: {fileID: 8300000, guid: 88b62f516d89d5f49ae0cb242e5eb531, type: 3}
 --- !u!82 &-6097843246520741487
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5051,7 +5051,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7174056600202680106, guid: 4b7bde376e2320e4abc54a98d4659d1b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: a2cb83d3a315e0f409756f37af652313, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

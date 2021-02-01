@@ -3914,7 +3914,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -7174056600202680106, guid: 4b7bde376e2320e4abc54a98d4659d1b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9f2fff44ebe2183409c331b48c2cd202, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 837634c42d700db449e6e2006ff85c12, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -4864,14 +4864,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5360924144097346846, guid: 357bd9db85e0cbb4a8086c22c534af37,
         type: 3}
+      propertyPath: heal
+      value: 
+      objectReference: {fileID: 8300000, guid: 43856ee9fe6f68341b86a413af2a2104, type: 3}
+    - target: {fileID: 5360924144097346846, guid: 357bd9db85e0cbb4a8086c22c534af37,
+        type: 3}
       propertyPath: cursor
       value: 
       objectReference: {fileID: 1522515051}
     - target: {fileID: 5360924144097346846, guid: 357bd9db85e0cbb4a8086c22c534af37,
         type: 3}
+      propertyPath: dashClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c8a8bbdf4444581429517d6ef5383955, type: 3}
+    - target: {fileID: 5360924144097346846, guid: 357bd9db85e0cbb4a8086c22c534af37,
+        type: 3}
       propertyPath: gameMaster
       value: 
       objectReference: {fileID: 1708888207}
+    - target: {fileID: 5360924144097346846, guid: 357bd9db85e0cbb4a8086c22c534af37,
+        type: 3}
+      propertyPath: dashRecharge
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c6665017718b7847becc4d563c1260d, type: 3}
     - target: {fileID: 5360924144097346846, guid: 357bd9db85e0cbb4a8086c22c534af37,
         type: 3}
       propertyPath: currentWeapon

@@ -110,8 +110,8 @@ MonoBehaviour:
   isShooting: 0
   firePoint: {fileID: 0}
   isReloading: 0
-  shot: {fileID: 8300000, guid: 4a080ef08d947564c81d27381094711c, type: 3}
-  reload: {fileID: 8300000, guid: 51855dc1172e3fe4ebf319997a3d4680, type: 3}
+  shot: {fileID: 8300000, guid: 9fd6097a3de47794a8a5fc28ae664bd9, type: 3}
+  reload: {fileID: 8300000, guid: ba288be568637f740a99ef6650d9ee6e, type: 3}
   onReloaded:
     m_PersistentCalls:
       m_Calls: []

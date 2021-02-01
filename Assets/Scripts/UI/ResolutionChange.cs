@@ -27,6 +27,7 @@ public class ResolutionChange : MonoBehaviour
 
     public void ChangeResolution(Dropdown change)
     {
+        GetComponent<AudioSource>().Play();
         Resolution res = resolutions[change.value];
         Screen.SetResolution(res.width, res.height, Screen.fullScreenMode, res.refreshRate);
         PlayerPrefs.SetInt("width", res.width);
@@ -36,12 +37,14 @@ public class ResolutionChange : MonoBehaviour
 
     public void ChangeFullscreen(Dropdown change)
     {
+        GetComponent<AudioSource>().Play();
         Screen.fullScreenMode = (FullScreenMode)((change.value == 2) ? 3 : change.value);
         PlayerPrefs.SetInt("fullScreenMode", (change.value == 2) ? 3 : change.value);
     }
 
     public void ChangeVSync(Toggle change)
     {
+        GetComponent<AudioSource>().Play();
         QualitySettings.vSyncCount = Convert.ToInt32(change.isOn);
         PlayerPrefs.SetInt("vSyncCount", QualitySettings.vSyncCount);
     }

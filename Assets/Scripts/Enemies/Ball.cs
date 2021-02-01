@@ -24,7 +24,7 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         particles.Stop();
-        GetComponent<AudioSource>().PlayOneShot(spawn);
+        GetComponent<AudioSource>().PlayOneShot(spawn, 0.1f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

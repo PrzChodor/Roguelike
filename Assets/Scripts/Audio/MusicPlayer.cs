@@ -1,30 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicPlayer : MonoBehaviour
 {
+    public AudioClip menuMusic;
+    public List<AudioClip> gameMusic;
+    public AudioClip deathMusic;
+
+    public static MusicPlayer instance;
+
     private AudioSource audioSource;
-    Object[] music;
+    private IEnumerator coroutine;
 
     private void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
-        audioSource = GetComponent<AudioSource>();
-        music = Resources.LoadAll("Music", typeof(AudioClip));
-        audioSource.clip = music[0] as AudioClip;
+        if (!instance)
+        {
+            DontDestroyOnLoad(gameObject);
+            audioSource = GetComponent<AudioSource>();
+            SceneManager.sceneLoaded += OnSceenChanged;
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    void Start()
+    public void OnSceenChanged(Scene scene, LoadSceneMode mode)
     {
-        playRandomMusic();
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+
+        if (scene.name == "Game")
+        {
+            audioSource.loop = false;
+            playRandomMusic();
+        }
+        else if (scene.name == "Menu")
+        {
+            audioSource.clip = menuMusic;
+            audioSource.Play();
+            audioSource.loop = true;
+        }
+        print(scene.name);
     }
 
     void playRandomMusic()
     {
-        audioSource.clip = music[Random.Range(0, music.Length)] as AudioClip;
+        audioSource.clip = gameMusic[Random.Range(0, gameMusic.Count)];
         audioSource.Play();
-        StartCoroutine(WaitForClipEnd());
+        coroutine = WaitForClipEnd();
+        StartCoroutine(coroutine);
     }
 
     IEnumerator WaitForClipEnd()

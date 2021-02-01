@@ -21,13 +21,14 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(TransitionIn());
         LoadSettings();
     }
 
     public void Play()
     {
         source.Play();
-        StartCoroutine(Transition());
+        StartCoroutine(TransitionOut());
     }
 
     public void Exit()
@@ -61,7 +62,7 @@ public class Menu : MonoBehaviour
         optionsMenu.transform.GetChild(3).GetChild(tab).GetComponent<Button>().interactable = false;
     }
 
-    IEnumerator Transition()
+    IEnumerator TransitionOut()
     {
         float elapsedTime = 0.0f;
 
@@ -71,10 +72,27 @@ public class Menu : MonoBehaviour
             elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
+        blackScreen.color = new Color(0, 0, 0, 1);
 
         SceneManager.LoadScene("Game");
         yield return null;
     }
+
+    IEnumerator TransitionIn()
+    {
+        float elapsedTime = 0.0f;
+
+        while (elapsedTime < 1.0f)
+        {
+            blackScreen.color = Color.Lerp(new Color(0, 0, 0, 1), new Color(0, 0, 0, 0), elapsedTime);
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return null;
+        }
+        blackScreen.color = new Color(0, 0, 0, 0);
+
+        yield return null;
+    }
+
     IEnumerator OnExit()
     {
         yield return new WaitWhile(() => source.isPlaying);
