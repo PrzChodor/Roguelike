@@ -175,7 +175,7 @@ public class PlayerController : Character
             uiManager.HideInteraction();
         }
 
-        if (currentControls == "Keyboard&Mouse")
+        if (currentControls == "Keyboard&Mouse" && Time.timeScale != 0)
         {
             var temp = (direction - player.position);
 

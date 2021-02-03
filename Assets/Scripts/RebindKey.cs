@@ -12,7 +12,7 @@ public class RebindKey : MonoBehaviour
 
     private void Start()
     {
-        var icon = Resources.Load<Sprite>($"KeyIcons/{inputAction.action.bindings[inputBinding].ToDisplayString()}");
+        var icon = Resources.Load<Sprite>($"KeyIcons/{inputAction.action.GetBindingDisplayString(inputBinding).Replace("\\", "BackSlash").Replace(".", "Dot").Replace("/", "Slash")}");
         if (icon != null)
             keyIcon.sprite = icon;
     }

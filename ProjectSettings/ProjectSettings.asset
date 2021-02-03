@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: "Przemys\u0142aw Chod\xF3r"
   productName: Zindon
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: b3fd0cd9d92abeb4db347ea3947c4b86, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_ShowUnitySplashScreen: 1

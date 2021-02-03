@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject hud;
     public GameObject deathScreen;
+    public GameObject pauseScreen;
     public GameObject crosshair;
     [Space]
     public TextMeshProUGUI ammoCount;
@@ -24,6 +26,7 @@ public class UIManager : MonoBehaviour
     public GameObject healthBarFull;
     [Space]
     public CanvasGroup interactButton;
+    public InputActionReference interactAction;
 
 
     private GameObject player;
@@ -33,6 +36,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         deathScreen.SetActive(false);
+        pauseScreen.SetActive(false);
         HideInteraction();
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -112,6 +116,8 @@ public class UIManager : MonoBehaviour
 
     public void ShowInteraction()
     {
+        var path = $"KeyIcons/{interactAction.action.GetBindingDisplayString(0).Replace("\\", "BackSlash").Replace(".", "Dot").Replace("/", "Slash")}";
+        interactButton.GetComponent<Image>().sprite = Resources.Load<Sprite>(path);
         interactButton.alpha = 1;
     }
 
@@ -120,5 +126,17 @@ public class UIManager : MonoBehaviour
         interactButton.alpha = 0;
     }
 
+    public void ShowPauseMenu()
+    {
+        pauseScreen.SetActive(true);
+        crosshair.SetActive(false);
+        Cursor.visible = true;
+    }
 
+    public void HidePauseMenu()
+    {
+        pauseScreen.SetActive(false);
+        crosshair.SetActive(true);
+        Cursor.visible = false;
+    }
 }

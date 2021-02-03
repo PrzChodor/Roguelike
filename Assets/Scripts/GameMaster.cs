@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameMaster : MonoBehaviour
 {
@@ -40,5 +42,24 @@ public class GameMaster : MonoBehaviour
 
         Time.timeScale = 1;
         yield return null;
+    }
+
+    public void TogglePause(InputAction.CallbackContext context)
+    {
+        if (context.started && Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+            GetComponent<UIManager>().ShowPauseMenu();
+        }
+        else if (context.started && Time.timeScale == 0)
+        {
+            HidePause();
+        }
+    }
+
+    public void HidePause()
+    {
+        Time.timeScale = 1;
+        GetComponent<UIManager>().HidePauseMenu();
     }
 }

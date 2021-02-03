@@ -5575,6 +5575,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3dfefa19-20a2-475e-94d7-15818fe61e3d
     m_ActionName: Player/ShowMap[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8b9edc1f-24f8-48c6-9987-22cce925a9a4
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
