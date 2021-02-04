@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 904894546}
   - component: {fileID: 5215865020677282065}
   - component: {fileID: 540180770039606915}
-  - component: {fileID: 278475749567754971}
   m_Layer: 11
   m_Name: Bomb
   m_TagString: Enemy
@@ -202,19 +201,6 @@ MonoBehaviour:
   maxHealth: 4
   active: 0
   heart: {fileID: 2787009938955271637, guid: 6ca46989f3fd88948a8d21a54a822948, type: 3}
+  ballSpawner: {fileID: 7771016625425222651, guid: 3c55656afa83b1c499a334c83e547128,
+    type: 3}
   trigerDistance: 0.7
---- !u!114 &278475749567754971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3793312776321471540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fa372704816c1a4084b1d2e726e3509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  balls: {fileID: 3946011773236214287, guid: 11bb526583d5ae24eb00fd5270a86812, type: 3}
-  numberOfBalls: 16
-  speed: 200
