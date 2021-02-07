@@ -48,11 +48,6 @@ public class Mage : Enemy
         }
     }
 
-    public override void OnDeath()
-    {
-        base.OnDeath();
-    }
-
     IEnumerator OnAttack()
     {
         attacked = true;

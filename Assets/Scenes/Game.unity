@@ -4208,7 +4208,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1708888207
 GameObject:
@@ -4277,7 +4277,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1708888210
 AudioSource:
@@ -5010,7 +5010,7 @@ RectTransform:
   - {fileID: 1552292595}
   - {fileID: 1660360037}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5198,7 +5198,7 @@ PrefabInstance:
     - target: {fileID: 5360924144097346833, guid: 357bd9db85e0cbb4a8086c22c534af37,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5360924144097346833, guid: 357bd9db85e0cbb4a8086c22c534af37,
         type: 3}
@@ -5310,6 +5310,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5877658166526752022, guid: 0d8de93e2588b0c439f3a7b7576a2a50,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5902228314890692336, guid: 0d8de93e2588b0c439f3a7b7576a2a50,
         type: 3}
       propertyPath: m_Name
@@ -5318,7 +5323,7 @@ PrefabInstance:
     - target: {fileID: 5902228314890692342, guid: 0d8de93e2588b0c439f3a7b7576a2a50,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5902228314890692342, guid: 0d8de93e2588b0c439f3a7b7576a2a50,
         type: 3}
@@ -5379,13 +5384,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 76f2f80eb2741a04ea8448f8503026be,
+      objectReference: {fileID: 23800000, guid: 1aa6ebb2438866544b6ffd4850ef1afa,
         type: 2}
     - target: {fileID: 5902228315990030623, guid: 0d8de93e2588b0c439f3a7b7576a2a50,
         type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 68f884b2f43c1a549a51be6765e3a479,
+      objectReference: {fileID: 23800000, guid: a6dcc9ce874824c4081768111564e6d9,
         type: 2}
     - target: {fileID: 6129739047747093722, guid: 0d8de93e2588b0c439f3a7b7576a2a50,
         type: 3}

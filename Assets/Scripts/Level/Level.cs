@@ -72,6 +72,13 @@ public class Level : MonoBehaviour
             OpenDoors();
     }
 
+    public void AddEnemy(GameObject enemy)
+    {
+        enemies.Add(enemy);
+        enemy.GetComponent<Enemy>().Activate();
+        OnDeactivation.AddListener(enemy.GetComponent<Enemy>().Deactivate);
+    }
+
     public void Activate()
     {
         OnActivation.Invoke();

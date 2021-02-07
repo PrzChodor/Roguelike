@@ -25,6 +25,8 @@ public class LevelMaster : MonoBehaviour
 
     private void Start()
     {
+        currentLevel.land.BuildNavMesh();
+        currentLevel.flying.BuildNavMesh();
         currentLevel.Activate();
         rooms = MapGenerator.GenerateMap();
     }

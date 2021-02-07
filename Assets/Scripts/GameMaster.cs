@@ -40,6 +40,7 @@ public class GameMaster : MonoBehaviour
         }
         blackScreen.color = new Color(0, 0, 0, 0);
 
+        GetComponent<LevelMaster>().currentLevel.Activate();
         Time.timeScale = 1;
         yield return null;
     }
@@ -50,10 +51,22 @@ public class GameMaster : MonoBehaviour
         {
             Time.timeScale = 0;
             GetComponent<UIManager>().ShowPauseMenu();
+            var sources = FindObjectsOfType<AudioSource>();
+            foreach (var source in sources)
+            {
+                if (source.outputAudioMixerGroup.name == "SFX")
+                    source.Pause();
+            }
         }
         else if (context.started && Time.timeScale == 0)
         {
             HidePause();
+            var sources = FindObjectsOfType<AudioSource>();
+            foreach (var source in sources)
+            {
+                if (source.outputAudioMixerGroup.name == "SFX")
+                    source.UnPause();
+            }
         }
     }
 

@@ -8,16 +8,14 @@ using UnityEngine.Events;
 public abstract class Enemy : Character
 {
     public bool active = false;
+    public GameObject heart;
 
     protected Rigidbody2D player;
     protected NavMeshAgent agent;
     protected Animator animator;
     protected Rigidbody2D rb;
-
-    public GameObject heart;
-
-    private Level currentLevel;
-    private UnityEvent OnThisDeath;
+    protected Level currentLevel;
+    protected UnityEvent OnThisDeath;
 
     public abstract void Move();
     public abstract void Attack();
@@ -71,7 +69,7 @@ public abstract class Enemy : Character
         if (loot < 0.15f)
         {
             var item = Instantiate(heart, transform.parent);
-            item.transform.position = this.transform.position;
+            item.transform.position = transform.position;
         }
 
         OnThisDeath.Invoke();

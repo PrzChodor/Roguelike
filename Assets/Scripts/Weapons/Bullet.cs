@@ -61,6 +61,6 @@ public class Bullet : MonoBehaviour
         rb.velocity = Vector2.zero;
         sprite.enabled = false;
         trail.enabled = false;
-        GameObject.Destroy(gameObject, particles.main.duration);
+        Destroy(gameObject, particles.main.duration);
     }
 }
