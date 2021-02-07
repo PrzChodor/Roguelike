@@ -167,8 +167,10 @@ public class PlayerController : Character
         if (collisions.Any(c => c.CompareTag("Door")) && !falling)
         {
             var door = (collisions.Find(c => c.CompareTag("Door"))).GetComponent<Door>();
-            if (door.opened)
+            if (door.opened && Time.timeScale == 1f)
                 uiManager.ShowInteraction();
+            else
+                uiManager.HideInteraction();
         }
         else
         {
