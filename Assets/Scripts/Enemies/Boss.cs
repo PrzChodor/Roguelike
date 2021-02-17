@@ -5,23 +5,28 @@ using UnityEngine;
 public class Boss : Enemy
 {
     public float attackCooldown;
-    public GameObject projectile;
+    public BallSpawner spawner;
+    public GameObject ball;
+    private UIManager ui;
 
     private bool attacked;
-    List<Transform> castPoints;
-
     public override void Awake()
     {
         base.Awake();
-        castPoints = new List<Transform>();
-        foreach (Transform child in transform.GetChild(0))
-            castPoints.Add(child);
+        ui = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<UIManager>();
+        ui.ShowBossHP();
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        ui.UpdateBossHP((float)health / maxHealth);
     }
 
     public override void Attack()
     {
         if (!attacked)
-            StartCoroutine(OnAttack());
+            OnAttack();
     }
 
     public override void Die()
@@ -32,17 +37,44 @@ public class Boss : Enemy
         Deactivate();
     }
 
+    public override void OnDeath()
+    {
+        ui.GetComponent<GameMaster>().End();
+    }
+
     public override void Move()
     {
         var dir = rb.position.x - player.position.x;
         sprite.flipX = dir > 0;
     }
 
-    IEnumerator OnAttack()
+    IEnumerator Cooldown()
     {
-        attacked = true;
-        animator.SetTrigger("Action" + Random.Range(0, 4));
         yield return new WaitForSeconds(attackCooldown);
         attacked = false;
+    }
+
+    public void OnAttack()
+    {
+        attacked = true;
+        animator.SetTrigger("Action" + Random.Range(1, 3));
+    }
+
+    public void SpawnSpiral()
+    {
+        var newSpawner = Instantiate(spawner, this.transform.position, Quaternion.identity).GetComponent<BallSpawner>();
+        newSpawner.timeBetweenBalls = 0.05f;
+        newSpawner.numberOfBalls = 16;
+        newSpawner.balls = ball;
+        newSpawner.Spawn();
+    }
+
+    public void SpawnCircle()
+    {
+        var newSpawner = Instantiate(spawner, this.transform.position, Quaternion.identity).GetComponent<BallSpawner>();
+        newSpawner.timeBetweenBalls = 0f;
+        newSpawner.numberOfBalls = 32;
+        newSpawner.balls = ball;
+        newSpawner.Spawn();
     }
 }

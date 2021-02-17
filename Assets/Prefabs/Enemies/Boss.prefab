@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &781788027162882881
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 365600822369455291}
-  m_Layer: 11
-  m_Name: CastPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &365600822369455291
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781788027162882881}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.36, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5883074741604520499}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2997662379977134238
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,7 +11,6 @@ GameObject:
   - component: {fileID: 5883074741604520499}
   - component: {fileID: 2821396922405764055}
   - component: {fileID: 340033061402474602}
-  - component: {fileID: 7717442708549603013}
   - component: {fileID: 6537408070881165133}
   - component: {fileID: 4992246187208904595}
   - component: {fileID: 2098094022703605596}
@@ -64,9 +33,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.204, y: 0.271, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 365600822369455291}
-  - {fileID: 5722780080085822190}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -142,22 +109,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7717442708549603013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2997662379977134238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fa372704816c1a4084b1d2e726e3509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  balls: {fileID: 4738324079594300284, guid: 101f09bdae4aa4a4f88b1397dd1caf34, type: 3}
-  numberOfBalls: 32
-  timeBetweenBalls: 0
-  speed: 100
 --- !u!195 &6537408070881165133
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -217,10 +168,10 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   active: 0
-  heart: {fileID: 2787009938955271637, guid: 6ca46989f3fd88948a8d21a54a822948, type: 3}
-  attackCooldown: 10
-  projectile: {fileID: 4738324079594300284, guid: 101f09bdae4aa4a4f88b1397dd1caf34,
-    type: 3}
+  heart: {fileID: 0}
+  attackCooldown: 3
+  spawner: {fileID: 5182450598157121417, guid: 3c55656afa83b1c499a334c83e547128, type: 3}
+  ball: {fileID: 4738324079594300284, guid: 101f09bdae4aa4a4f88b1397dd1caf34, type: 3}
 --- !u!70 &5005946249446764732
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -253,33 +204,3 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0009458959, y: -0.41384983}
   m_Size: {x: 0.71108437, y: 0.2572409}
   m_Direction: 1
---- !u!1 &7877232221146210875
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5722780080085822190}
-  m_Layer: 11
-  m_Name: HandPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5722780080085822190
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7877232221146210875}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.64, y: 0.19, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5883074741604520499}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

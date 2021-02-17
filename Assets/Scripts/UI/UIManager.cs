@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject deathScreen;
     public GameObject pauseScreen;
     public GameObject crosshair;
+    public Slider bossHP;
     [Space]
     public TextMeshProUGUI ammoCount;
     [Space]
@@ -138,5 +139,15 @@ public class UIManager : MonoBehaviour
         pauseScreen.SetActive(false);
         crosshair.SetActive(true);
         Cursor.visible = false;
+    }
+
+    public void ShowBossHP()
+    {
+        bossHP.gameObject.SetActive(true);
+    }
+
+    public void UpdateBossHP(float value)
+    {
+        bossHP.value = value;
     }
 }

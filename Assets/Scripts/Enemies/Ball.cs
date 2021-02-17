@@ -24,6 +24,10 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         particles.Stop();
+    }
+
+    public void SpawnedSound()
+    {
         GetComponent<AudioSource>().PlayOneShot(spawn);
     }
 

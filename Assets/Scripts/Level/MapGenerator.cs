@@ -15,7 +15,7 @@ public static class MapGenerator
     {
         Random random = new Random(seed);
 
-        int mainLength = 1; random.Next(7, 10);
+        int mainLength = random.Next(7, 10);
         int maxBranchLength = 5;
 
         var map = new List<int>();
@@ -174,8 +174,7 @@ public static class MapGenerator
         for (int i = 0; i < rooms.Count; i++)
         {
             rooms[i] = rooms[i].OrderBy(room => room.Item1).ToList();
-            //listOfRooms.Add(new Room(rooms[i], random.Next(0, 3)));
-            listOfRooms.Add(new Room(rooms[i], 0));
+            listOfRooms.Add(new Room(rooms[i], random.Next(0, 2)));
         }
         listOfRooms.Add(new Room("boss", rooms.Count + 1));
 

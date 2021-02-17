@@ -28,8 +28,11 @@ public class Slime : Enemy
 
     public void StartMovement()
     {
-        agent.isStopped = false;
-        GetComponent<AudioSource>().Play();
+        if (active)
+        {
+            agent.isStopped = false;
+            GetComponent<AudioSource>().Play();
+        }
     }
 
     public void StopMovement()

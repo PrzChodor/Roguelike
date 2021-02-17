@@ -15,6 +15,11 @@ public class GameMaster : MonoBehaviour
         StartCoroutine(Transition());
     }
 
+    public void End()
+    {
+        SceneManager.LoadScene("Congratulations");
+    }
+
     public void Exit()
     {
         SceneManager.LoadScene("Menu");
