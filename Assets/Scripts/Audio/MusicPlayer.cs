@@ -35,7 +35,7 @@ public class MusicPlayer : MonoBehaviour
         if (coroutine != null)
             StopCoroutine(coroutine);
 
-        if (scene.name == "Game")
+        if (scene.name == "Game" || scene.name == "Tutorial")
         {
             audioSource.loop = false;
             playRandomMusic();
@@ -58,6 +58,13 @@ public class MusicPlayer : MonoBehaviour
 
     void PlayDeathMusic()
     {
+        var sources = FindObjectsOfType<AudioSource>();
+        foreach (var source in sources)
+        {
+            if (source.outputAudioMixerGroup.name == "SFX")
+                source.volume = 0f;
+        }
+
         audioSource.clip = deathMusic;
         audioSource.Play();
         audioSource.loop = true;

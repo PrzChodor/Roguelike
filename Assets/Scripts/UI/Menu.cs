@@ -21,6 +21,7 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
         StartCoroutine(TransitionIn());
         LoadSettings();
     }
@@ -28,7 +29,12 @@ public class Menu : MonoBehaviour
     public void Play()
     {
         source.Play();
-        StartCoroutine(TransitionOut());
+        StartCoroutine(TransitionOut("Game"));
+    }
+    public void Tutorial()
+    {
+        source.Play();
+        StartCoroutine(TransitionOut("Tutorial"));
     }
 
     public void Exit()
@@ -62,7 +68,7 @@ public class Menu : MonoBehaviour
         optionsMenu.transform.GetChild(3).GetChild(tab).GetComponent<Button>().interactable = false;
     }
 
-    IEnumerator TransitionOut()
+    IEnumerator TransitionOut(string scene)
     {
         float elapsedTime = 0.0f;
 
@@ -74,7 +80,7 @@ public class Menu : MonoBehaviour
         }
         blackScreen.color = new Color(0, 0, 0, 1);
 
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(scene);
         yield return null;
     }
 

@@ -9,11 +9,9 @@ public class Door : MonoBehaviour
     public bool opened = true;
     public string direction;
     public int toLevel;
-    private UIManager ui;
 
     private void Awake()
     {
-        ui = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<UIManager>();
         animator = GetComponent<Animator>();
     }
 
@@ -29,7 +27,7 @@ public class Door : MonoBehaviour
         animator.SetTrigger("Close");
     }
 
-    public void Enter()
+    public virtual void Enter()
     {
         if (opened)
             GameObject.FindGameObjectWithTag("GameMaster").GetComponent<LevelMaster>().ChangeLevel(toLevel, direction);

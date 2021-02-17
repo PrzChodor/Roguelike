@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 365600822369455291}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CastPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,9 +47,9 @@ GameObject:
   - component: {fileID: 2098094022703605596}
   - component: {fileID: 5005946249446764732}
   - component: {fileID: 2917637957565988503}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balls: {fileID: 4738324079594300284, guid: 101f09bdae4aa4a4f88b1397dd1caf34, type: 3}
   numberOfBalls: 32
+  timeBetweenBalls: 0
   speed: 100
 --- !u!195 &6537408070881165133
 NavMeshAgent:
@@ -261,7 +262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5722780080085822190}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HandPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -15,7 +15,7 @@ public static class MapGenerator
     {
         Random random = new Random(seed);
 
-        int mainLength = random.Next(7, 10);
+        int mainLength = 1; random.Next(7, 10);
         int maxBranchLength = 5;
 
         var map = new List<int>();

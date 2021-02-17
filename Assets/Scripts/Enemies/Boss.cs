@@ -29,12 +29,13 @@ public class Boss : Enemy
         animator.SetTrigger("Die");
         dead = true;
         rb.simulated = false;
+        Deactivate();
     }
 
     public override void Move()
     {
         var dir = rb.position.x - player.position.x;
-        sprite.flipX = dir < 0;
+        sprite.flipX = dir > 0;
     }
 
     IEnumerator OnAttack()
